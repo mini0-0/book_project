@@ -1,10 +1,16 @@
 {% load socialaccount %}
 
+{% providers_media_js %}
+
+<h1>홈페이지</h1>
+
 <navbar>
-    {% if user.is_athenticated %}
+    {% if user.is_authenticated %}
+        <p> 안녕하세요, {{user.username}}님 </p>
         <a href ="{% url 'account_logout' %}">로그아웃</a>
     {% else %}
-        <a href="{% url 'account_signup' %}">로그인</a>
+        <p> 로그아웃된 상태입니다.</p>
+        <a href="{% url 'account_login' %}">로그인</a>
         <a href="{% url 'account_signup' %}">회원가입</a><br>
         <a href="{% provider_login_url 'kakao' %}">카카오 로그인</a>
         <a href="{% provider_login_url 'google'%}">구글 로그인</a>
@@ -14,10 +20,3 @@
 
 </navbar>
 
-<h1>홈페이지</h1>
-
-{% if user.is_athenticated %}
-    <p> 안녕하세요, {{user}}님 </p>
-{% else %}
-    <p> 로그아웃된 상태입니다.</p>
-{% endif %}
