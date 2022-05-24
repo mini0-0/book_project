@@ -52,6 +52,25 @@ class SignupForm(forms.ModelForm):
                 'nickname' : forms.TextInput,       
             }
 
+# class LoginForm(forms.Form):
+#     def clean(self):
+#         cleaned_data = super().clean()
+#         username = cleaned_data.get('username')
+#         password = cleaned_data.get('password')
+
+#         if password and username :
+#             try:
+#                 user = User.objects.get(username = username)
+#             except User.DoesNotExist:
+#                 self.add_error("username", "아이디가 존재하지 않습니다.")
+#                 return
+
+#             if not check_password(password, user.password):
+#                 self.add_error("password", "비밀번호가 일치하지 않습니다.")
+#             else:
+#                 self.user_id = user.id
+
+
     # password 검사 
     def clean_re_password(self):
             cd = self.cleaned_data

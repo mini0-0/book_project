@@ -14,10 +14,13 @@
   </head>
   
   <body width="100%" height="100%">
-    
-    <form action="{% url 'login' %}" method="post" class="loginForm">  
+  
+    <form action="{% url 'login' %}" method="POST" class="loginForm">  
       <h2>로그인</h2>
       {% csrf_token %}
+      {% if error %}
+        <span style = "color:red">{{error}}</span>
+      {% endif %}
       <div class="idForm">
         <input type="text" class="id" name = "username" placeholder="ID" >
       </div>
@@ -25,6 +28,9 @@
         <input type="password" class="pw" name ="password" placeholder="PW" > 
       </div>
       <button type="submit" class="btn" value="로그인" >로그인</button>
+
+    
+  
       
       <!--
         let button = () => {

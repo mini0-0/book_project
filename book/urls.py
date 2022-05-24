@@ -11,5 +11,7 @@ urlpatterns = [
    
     # account
     path('login/', views.loginview, name='login'),
-    path('signup/', views.signup, name='signup'), 
+    path('signup/', views.signup, name='signup'),
+
+    path('search/', views.search, name='search'),  
 ]

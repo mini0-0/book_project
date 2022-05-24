@@ -1,0 +1,20 @@
+{% extends 'book/base.html' %}
+
+{% block content %}
+<div class="search">
+    <h2>검색결과</h2>
+    <br>
+    {% for book in search_books %}
+        <img src="{{ book.book_img_url }}" alt="My Image">
+        <h4>제목 : {{ book.book_title }}</h4>
+        <h5>저자 : {{ book.book_author }}
+            <br>
+            출판사 : {{ book.book_publisher }}
+        </h5>
+        
+        
+    {% empty %}
+        검색 결과가 없습니다.
+    {% endfor %}
+{% endblock %}
+</div>

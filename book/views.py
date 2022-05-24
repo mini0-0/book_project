@@ -1,5 +1,6 @@
 import csv
 import pandas as pd
+from django.db.models import Q
 from django.urls import reverse
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login
@@ -29,7 +30,7 @@ from book.models import User, Book
 def main(request):
     return render(request,'book/main.html')
 
-# account
+# account/signup
 def signup(request) : 
     if request.method == 'GET' :
         form = SignupForm()
@@ -43,34 +44,10 @@ def signup(request) :
             return render(request, 'account/signup_success.html')
     return render(request, 'account/signup.html', {'form': form})
 
-        # username = request.POST.get('username', None)
-        # password = request.POST.get('password', None)
-        # re_password = request.POST.get('re_password', None)
-        # email = request.POST.get('email', None)
-        # nickname = request.POST.get('nickname', None)
-
-        # res_data={}
-
-        # if not(username and password and re_password and email and nickname) :
-        #     res_data['error'] = "모든 값을 입력해야 합니다."
-
-        # elif password != re_password :
-        #     res_data['error'] = "비밀번호가 다릅니다!"
-        # else :
-        #     form = CustomUser (
-        #         username = username,
-        #         password = make_password(password),
-        #         email = email,
-        #         nickname = nickname,
-        #     )
-        #     form.save()
-        #     return render(request, 'common/signup_success.html')
-        # return render(request, 'common/signup.html',res_data)
-
-     
+# account/login    
 def loginview(request) :
     if request.method == 'GET' :
-        return render(request, 'account/login.html')
+            return render(request, 'account/login.html')
 
     elif request.method == 'POST' :
         username = request.POST.get('username')
@@ -83,10 +60,9 @@ def loginview(request) :
             return render(request, 'book/main.html')
         else :
             # 로그인 실패
-            return render(request, 'account/login.html', {'error': '아이디 혹은 패스워드가 올바르지 않습니다.'})
+            return render(request, 'account/login.html', {'error': '아이디 또는 비밀번호를 확인하세요!'})
     else : 
         return render(request, 'account/login.html')
-
 
 # profile
 class ProfileView(DetailView):
@@ -127,3 +103,14 @@ class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
     def get_success_url(self):
         return reverse('profile',kwargs=({'user_id':self.request.user.id})) 
 
+def search(request) :
+    if request.method == "GET":
+        searchKey = request.GET['q']
+
+        search_books = Book.objects.filter(Q(book_title__icontains = searchKey))
+
+        return render(request,'book/search.html', {'search_books': search_books})
+
+    else:
+        return render(request, 'book/main.html') 
+        
