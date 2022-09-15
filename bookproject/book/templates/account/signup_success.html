@@ -1,0 +1,9 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/signup_success_style.css' %}">
+
+<p>회원가입 성공!</p>
+<br>
+
+<a href="{% url 'login' %}" id = "login_link" >로그인</a>
+<a href="{% url 'main' %}" id = "main_link" >메인으로 돌아가기</a>

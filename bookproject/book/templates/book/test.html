@@ -1,0 +1,11 @@
+<h1> 테스트 </h1>
+{% for i in book_recommend %}
+    <img src="{{ i.book_img_url }}" alt="My Image" width=200px height=auto></td>
+     {{ i.title }}
+{% endfor %}
+
+{% comment %} <h1> 테스트2 </h1>
+{% for i in book_recommend %}
+    <img src="{{ i.book_img_url }}" alt="My Image" width=200px height=auto></td>
+     {{ i.title }}
+{% endfor %} {% endcomment %}

@@ -1,0 +1,93 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    left: 20%;
+}
+
+#login_link{
+   position: absolute;
+   top: 50px;
+   right: 30px;
+   font-size: 16px;
+   font-weight: 500;
+   color: #363864;
+   
+}
+
+p {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    font-size: 20px;
+    color: #363864;
+    font-weight: 600;
+}
+
+hr {
+
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+h2 {
+    font-size: 23px;
+    color: #363864;
+    position: relative;
+    left: 25%;
+    margin-top: 20px;
+}
+
+.form-group {
+    top: 50px;
+    margin-bottom: 50px;
+    font-size: 17px;
+    
+}
+
+.form-group label {
+    position: relative;
+    top: 10px;
+    left: 38%;
+    color: #363864;
+    font-weight: 800;
+
+}
+
+.form-control {
+    position: absolute;
+    left: 50%;
+    font-size: 17px;
+    border-style: solid;
+    border-color: #FFC1AB;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.btn-primary{
+    position: absolute;
+    left: 43%;
+    background-color: #FFC1AB;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    height: 30px;
+    width: 200px;
+}
+
+.errorlist{
+    position: relative;
+}
+
+.alert-danger {
+    position: absolute;
+    right: 5%;
+    width: 300px;
+    font-size:small;
+    color: red;
+}

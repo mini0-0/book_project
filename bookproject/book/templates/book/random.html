@@ -1,0 +1,9 @@
+{% extends 'book/base.html' %}
+{% load static %}
+<h2>랜덤 출력</h2>
+
+{% for b in random1 %}
+    <hr/>
+    <h2><a href="{{ b.get_absolute_url }}">{{ b.book_title }}</a></h2>
+    <h4>{{ b.book_author}}</h4>
+{% endfor %}

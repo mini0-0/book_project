@@ -1,0 +1,52 @@
+<DOCTYPE HTML5>
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>MyPage</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    
+      </head>
+    
+      <body width="100%" height="100%">
+         <form action="index.html" method="post" class="mypageForm">
+          <h2>마이페이지</h2>
+          <div>
+            <h3 class="join_title">
+              <label for="nickname">닉네임 변경</label>
+            </h3>
+            <span class="box int_nickname">
+              <input type="text" id="nickname" class="int" maxlength="20">
+            </span>
+          </div>
+          <div>
+            <h3 class="join_title">
+              <label for="pw1">비밀번호</label>
+            </h3>
+            <div class="box int_pw">
+              <input type="password" id="pw1" class="int" maxlength="20">
+            </div>
+          </div>
+          <div>
+            <h3 class="join_title">
+              <label for="pw2">비밀번호 확인</label>
+            </h3>
+            <div class="box int_pw_check">
+              <input type="password" id="pw2" class="int" maxlength="20">
+            </div>
+    
+            <!-- 비밀번호 두 개가 일치하는지 확인해줌 https://codepen.io/cwriv/pen/vuzbp
+            <div id="footer" class="incorrect">
+              <center><h1 id="footerText">Filler text</h1></center>          
+            </div>
+          -->
+          </div>
+         <button type="button" class="btn" onclick="button()">
+          SAVE
+        </button>
+        <script>
+          let button = () => {
+            alert('메인화면으로 이어지게 구현하기')
+          }
+        </script>
+      </form>
+    </body>
