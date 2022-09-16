@@ -1,0 +1,54 @@
+{% extends 'book/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+  {% if review %}
+      {{ review.title }}
+  {% else %}
+    새 포스트
+  {% endif %} | 북&장
+{% endblock title %}
+
+{% block content %}
+<main class="site-body">
+  <form class="review-form max-content-width" method="post" autocomplete="off" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="title">
+      {{ form.title|add_class:"cp-input"|attr:"placeholder:제목"}}
+      {% for error in form.title.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+    </div>
+    <div class="book">
+       {{ form.book |add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:책이름"}}
+      {% for error in form.book.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+    </div>
+
+    <div class="content">
+      {{ form.review_context|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:리뷰를 작성해 주세요."}}
+      {% for error in form.content.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+    </div>
+
+     <div class="rating">
+      <div class="cp-ic-button">
+         {{ form.rating }}
+        {% for error in form.rating.errors %}
+          <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+      </div>
+    </div>
+
+
+
+    <div class="buttons">
+      <a class="cp-button secondary cancel" href="{% if review %}{% url 'review-detail' review.id %}{% else %}{% url 'main' %}{% endif %}">취소</a>
+      <button class="cp-button submit" type="submit">완료</button>
+    </div>
+  </form>
+</main>
+{% endblock content %}

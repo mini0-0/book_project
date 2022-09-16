@@ -1,0 +1,36 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    left: 20%;
+}
+
+hr {
+
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+h3 {
+    position: relative;
+    left: 19%;
+    font-size: 20px;
+    color: #363864;
+    font-weight: 600;
+}
+
+table {
+    position: relative;
+    left: 25%;
+}
+
+#book_detail {
+    position:relative;
+    left: 3%;
+}
+
+h4, h5 {
+    color: #363864;
+}
