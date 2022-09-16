@@ -73,7 +73,7 @@ def loginview(request) :
         if user is not None :
             login(request, user)
             # 로그인 성공
-            return render(request, 'book/main.html')
+            return redirect('main')
         else :
             # 로그인 실패
             return render(request, 'account/login.html', {'error': '아이디 또는 비밀번호를 확인하세요!'})
