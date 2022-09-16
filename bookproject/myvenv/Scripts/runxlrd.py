@@ -1,4 +1,4 @@
-#!c:\users\dlrld\desktop\project\book_project\book_project\bookproject\myvenv\scripts\python.exe
+#!c:\users\minhy\desktop\9.15\bookproject\myvenv\scripts\python.exe
 # Copyright (c) 2005-2012 Stephen John Machin, Lingfo Pty Ltd
 # This script is part of the xlrd package, which is released under a
 # BSD-style licence.

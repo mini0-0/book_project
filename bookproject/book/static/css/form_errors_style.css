@@ -1,0 +1,15 @@
+.alert {
+    position: absolute;
+    top: 21%;
+    right: 15%;
+    width: 300px;
+    font-size:15px;
+    color: red;
+    line-height: 105%;
+}
+
+.errorlist {
+    position: relative;
+    left: 0%;
+    width: 150%;
+}
