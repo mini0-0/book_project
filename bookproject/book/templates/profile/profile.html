@@ -1,4 +1,6 @@
 {% extends 'book/base.html' %}
+{% load static %} 
+
 {% block title %}{{ profile_user.nickname }} | <a href="{% url 'main' %}">Book</a> {% endblock title %} 
 
 {% block content %}
@@ -30,16 +32,16 @@
        {% endif %}
        
         </div>
-      {% comment %} <div>
-        <a class="wishList" href="{% url 'wishListView' %}">
+      <div>
+        <a class="wishList" href="{% url 'profile-wishList' %}">
            위시리스트
         </a>
-      </div> {% endcomment %}
+      </div> 
 
        <div class="header">
       <h2>{{ profile_user.nickname }}님의 최신 리뷰</h2>
       {% if user_reviews %}
-        <a class="cp-ic-button after circle morereview" href="{% url 'user-review-list' profile_user.id %}">
+        <a href="{% url 'user-review-list' profile_user.id %}">
           리뷰 전체보기
       </a>
       {% endif %}
@@ -56,7 +58,7 @@
             <div class="metadata">
               <div class="review-rating">
                 <span class="cp-stars">
-                  {% for i in ""|ljust:review.rating %}★{% endfor %}
+                  {{ review.rating }}
                 </span>
               </div>
               <div class="review-author">
@@ -71,14 +73,10 @@
         </div>
       </a>
       {% empty %}
-      <p class="empty">아직 리뷰가 없어요 :(</p>
+        <p class="empty">아직 리뷰가 없어요 :(</p> 
       {% endfor %}
+      </div>
     </div>
-  </div>
-    </div>
-  </div>
-
-  
-  </div>
-</main>
+  </div>  
+  </main>
 {% endblock content %}

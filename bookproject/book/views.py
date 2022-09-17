@@ -90,7 +90,7 @@ class ProfileView(DetailView):
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         user_id = self.kwargs.get('user_id')
-       
+        context['user_reviews'] = Review.objects.filter(author__id=user_id).order_by('-dt_created')[:4]
         return context
 
 class ProfileSetView(LoginRequiredMixin,UpdateView):
@@ -318,10 +318,27 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class ReviewView(ListView):
     model = Review
-    template_name = "book/main.html"
+    template_name = "review/review_list.html"
     context_object_name = "reviews"
-    paginate_by = 4
+    paginate_by = 6
     ordering = ["-dt_created"]
+
+
+class UserReviewListView(ListView):
+    model = Review
+    template_name = 'review/user_review_list.html'
+    context_object_name = 'user_reviews'
+    paginate_by = 6
+
+    def get_queryset(self):
+        user_id = self.kwargs.get('user_id')
+        return Review.objects.filter(author__id=user_id).order_by('dt_created')
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile_user'] = get_object_or_404(User, id = self.kwargs.get('user_id'))
+        return context
+
 
 def get_document_vectors(document_list):
     document_embedding_list = []
