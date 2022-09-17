@@ -20,6 +20,7 @@
             
         {% endif %}
         
+        <a href="{% url 'review-list'%}">리뷰 보기</a>
     </div>
     </header>
 
@@ -78,34 +79,4 @@
         </div>
     </div>
 {% endblock header %}
-    
-{% block content %}
- <div class="contents">
-      {% for review in reviews %}
-        <a href="{% url 'review-detail' review.id %}">
-            <section class="cp-card content">
-                <div class="body">
-                <span class="cp-chip green"> {{ review.book.book_title}}</span> 
-                <h2 class="title"> {{review.title}}</h2>
-                <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
-                <div class="metadata">
-                    <div class="review-rating">
-                    <span class="cp-stars">
-                        {{ review.rating }}
-                    </span>
-                    </div>
-                    <div class="review-author">
-                      <div class="cp-avatar" style="background-image: url('{{ review.author.profile_pic.url }}')"></div>
-                    <span>{{review.author.nickname}}</span>
-                    </div>
-                </div>
-                </div>
-            </section>
-        </a>
-      {% empty %}
-        <p class="empty">
-            아직 리뷰가 없어요 :(
-        </p>
-      {% endfor %} 
-</div>
-{% endblock content %}
+
