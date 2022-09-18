@@ -119,7 +119,7 @@ class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
     def get_success_url(self):
         return reverse('profile',kwargs=({'user_id':self.request.user.id})) 
 
-
+# 검색
 def search(request) :
     search_key = request.GET.get('q')
     option_select = request.GET.getlist('option_select',None)
@@ -141,7 +141,7 @@ def search(request) :
         search_books = search_books.filter(Q(genre_name__icontains = search_key))
 
     page = int(request.GET.get('page',1))
-    paginator = Paginator(search_books,5)
+    paginator = Paginator(search_books,10)
 
     try:
         page_obj = paginator.page(page)
@@ -226,11 +226,6 @@ def bookDetail(request,book_isbn):
             'reviews': reviews,
         }
     )
-
-
-
-
-
 
 def addWishList(request, book_isbn):
     user = request.user
