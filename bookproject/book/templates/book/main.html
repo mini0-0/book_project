@@ -19,9 +19,10 @@
             <a href="{% url 'signup' %}" id = "signup_link">회원가입</a>
             
         {% endif %}
-        
+
         <a href="{% url 'review-list'%}" id="read_review_link">리뷰 보기</a>
-        <a href={% url 'book-recommend' %} id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+        <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+
     </div>
     </header>
 

@@ -43,6 +43,7 @@ urlpatterns = [
         CustomPasswordChangeView.as_view(),
         name='account_password_change',),
     path('accounts/',include('allauth.urls')),
+    path('api-auth/', include('rest_framework.urls')),
     
 ]
 

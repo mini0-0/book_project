@@ -3,8 +3,8 @@ from django.db.models import Q
 from django.urls import reverse
 from django.shortcuts import render,redirect,get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
+from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from random import *
-# from .forms import SignupForm
 from .forms import UserForm
 from django.views.generic import(
     DetailView, UpdateView, ListView, CreateView, DeleteView
@@ -18,6 +18,13 @@ from gensim.models import word2vec
 from django.core.paginator import Paginator
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+# import konlpy 
+# from konlpy.tag import Okt,Twitter 
+# from collections import Counter
+# from rest_framework.decorators import api_view
+# from rest_framework.response import Response
+# from krwordrank.word import summarize_with_keywords
+
 
 df = pd.DataFrame(list(Book.objects.all().values()))
 wish = pd.DataFrame(list(WishBookList.objects.all().values()))
@@ -114,30 +121,59 @@ class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
 
 
 def search(request) :
-   
-    if request.method == "GET":
-        search_key = request.GET['q']
-        option_select = request.GET.getlist('option_select',None)
-        
-        if 'all' in option_select :
-            search_books = Book.objects.filter(Q(book_title__icontains = search_key) | Q(book_publisher__icontains = search_key) | Q(book_author__icontains = search_key) | Q(genre_name__icontains = search_key))
-
-        elif 'title' in option_select :
-            search_books = Book.objects.filter(Q(book_title__icontains = search_key))
-
-        elif 'author' in option_select :
-            search_books = Book.objects.filter(Q(book_author__icontains = search_key))
-
-        elif 'publisher' in option_select :
-            search_books = Book.objects.filter(Q(book_publisher__icontains = search_key))
-
-        elif 'genre' in option_select :
-            search_books = Book.objects.filter(Q(genre_name__icontains = search_key))
-
-        return render(request,'book/search.html', {'search_books': search_books, 'search_key': search_key })
+    search_key = request.GET.get('q')
+    option_select = request.GET.getlist('option_select',None)
+    search_books = Book.objects.all().order_by('book_isbn')
     
-    else:
-        return render(request, 'book/main.html')
+    if 'all' in option_select :
+        search_books = search_books.filter(Q(book_title__icontains = search_key) | Q(book_publisher__icontains = search_key) | Q(book_author__icontains = search_key) | Q(genre_name__icontains = search_key))
+
+    elif 'title' in option_select :
+        search_books = search_books.filter(Q(book_title__icontains = search_key))
+
+    elif 'author' in option_select :
+        search_books = search_books.filter(Q(book_author__icontains = search_key))
+
+    elif 'publisher' in option_select :
+        search_books = search_books.filter(Q(book_publisher__icontains = search_key))
+
+    # elif 'genre' in option_select :
+    else :
+        search_books = search_books.filter(Q(genre_name__icontains = search_key))
+    
+    # page = request.GET.get('page',1)
+    page = int(request.GET.get('page',1))
+    paginator = Paginator(search_books,5)
+    # page_obj = paginator.page(page)
+
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    index = page_obj.number
+    max_index = len(paginator.page_range)
+    page_size = 5
+
+    start_index = index - page_size if index > page_size else 1
+
+    if index + page_size == max_index :
+        end_index = max_index
+    else :
+        end_index = index + page_size if index <= max_index else max_index
+
+    page_range = list(paginator.page_range[start_index-1:end_index])
+    context = {
+        'search_key': search_key,
+        'page_obj': page_obj,
+        'page_range' : page_range,
+        'max_index' : max_index,
+        'page_size' : page_size
+    }
+
+    return render(request,'book/search.html', context)
 
 
 # 장르선택
@@ -170,8 +206,11 @@ class BookList(ListView):
 
 def bookDetail(request,book_isbn):
     user = request.user
-    book = Book.objects.get(book_isbn=book_isbn)
-    book_list=Book.objects.all()
+    try:
+        book = Book.objects.get(book_isbn=book_isbn)
+    except:
+        bookMultiple = Book.objects.filter(book_isbn=book_isbn)
+        book = bookMultiple[0]
     reviews = Review.objects.all()
     try:
         wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
@@ -187,8 +226,7 @@ def bookDetail(request,book_isbn):
             'book': book,
             'wishList': WishBookList,
             'wished' : wished,
-            'reviews':reviews,
-            'book_list':book_list,
+            'reviews': reviews,
         }
     )
 
@@ -369,12 +407,12 @@ def recommendations(book_title):
     indices = pd.Series(df.index, index = df['book_title']).drop_duplicates()    
     idx = indices[book_title]
 
-    # 입력된 책과 줄거리(document embedding)가 유사한 책 20개 선정.
+    # 입력된 책과 줄거리(document embedding)가 유사한 책 15개 선정.
     sim_scores = list(enumerate(cosine_similarities[idx]))
     sim_scores = sorted(sim_scores, key = lambda x: x[1], reverse = True)
-    sim_scores = sim_scores[1:21]
+    sim_scores = sim_scores[1:16]
 
-    # 가장 유사한 책 20권의 인덱스
+    # 가장 유사한 책 15권의 인덱스
     book_indices = [i[0] for i in sim_scores]
 
     # 전체 데이터프레임에서 해당 인덱스의 행만 추출. 5개의 행을 가진다.
@@ -402,25 +440,50 @@ def recommendations(book_title):
     return recommend_list
 
 def book_recommend(request):
-    book_recommend = recommendations("하룻밤에 읽는 숨겨진 세계사")
-    book_list = Book.objects.all()
+    user = request.user
+    user_wishList = WishBookList.objects.filter(user_id=user)
+    wishlist_title = []
+    for b in user_wishList:
+        wish_book_title = b.book_id.book_title
+        wishlist_title.append(wish_book_title)
     #board_list = Board.objects.all() #models.py Board 클래스의 모든 객체를 board_list에 담음
     # board_list 페이징 처리
-    page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
-    paginator = Paginator(book_recommend, '10') #Paginator(분할될 객체, 페이지 당 담길 객체수)
-    page_obj = paginator.page(page) #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
-    #return render(request, 'template_name', {'page_obj':page_obj}) 
-    # book = Book.objects.get(book_isbn=book_isbn)
-    # wish_book = WishBookList.objects.get(book_id=book)
-    # print(wish_book)
-    #recommend = recommendations(wish['book_title'])
+    # page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
+    # paginator = Paginator(book_recommend, '10') #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    # page_obj = paginator.page(page) #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+    re_list=[]
+    for i in range(len(wishlist_title)):
+        re = recommendations(wishlist_title[i])
+        re_list.append(re)
+       
+
     context={
-        'book_recommend':book_recommend,
-        'book_list':book_list,
-        #recommend':recommend,
-        #'wish_book':wish_book,
-        'page_obj':page_obj,
+        #'book_recommend':book_recommend,
+        'wishlist_title':wishlist_title,
+        #'page_obj':page_obj,
+        're_list':re_list,
     }
     return render(request,"book/recommend.html",context)
 
 
+# @api_view(['GET'])
+# def review_wordcloud(request, book_id):
+#     movie = Book.objects.get(id=book_id) 
+#     all_reviews = movie.review_set.all() # 해당 영화 모든 리뷰
+#     texts = []
+#     for review in all_reviews: # 데이터 전처리
+#         texts.append(review.content) 
+#     stopwords = {'영화', '관람객', '너무', '정말', '보고', '일부', '완전히'} # 불용어
+#     keywords = summarize_with_keywords(texts, min_count=3, max_length=10, # NLP
+#         beta=0.85, max_iter=10, stopwords=stopwords, verbose=True)
+
+#     wordlist = []
+#     count = 0
+#     for key, val in keywords.items(): # 다음 라이브러리를 위한 후처리
+#         temp = {'name': key, 'value': int(val*100)}
+#         wordlist.append(temp)
+#         count += 1
+#         if count >= 30: # 출력 수 제한
+#             break
+
+#     return Response(wordlist)
