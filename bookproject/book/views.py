@@ -140,14 +140,11 @@ def search(request) :
     elif 'publisher' in option_select :
         search_books = search_books.filter(Q(book_publisher__icontains = search_key))
 
-    # elif 'genre' in option_select :
     else :
         search_books = search_books.filter(Q(genre_name__icontains = search_key))
     
-    # page = request.GET.get('page',1)
     page = int(request.GET.get('page',1))
-    paginator = Paginator(search_books,5)
-    # page_obj = paginator.page(page)
+    paginator = Paginator(search_books,10)
 
     try:
         page_obj = paginator.page(page)

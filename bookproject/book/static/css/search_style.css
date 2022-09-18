@@ -34,3 +34,24 @@ table {
 h4, h5 {
     color: #363864;
 }
+
+/* pagination */
+.pagination {
+    justify-content: center;
+    display: flex;
+    list-style: none;
+}
+
+.pagination li a{
+    color: #363864;
+    padding: 10px;
+}
+
+.pagination li a:hover {
+    background-color: #FFC1AB;
+    border-radius: 4px;
+}
+
+.page-item.active .page-link {
+    color: darksalmon;
+}
