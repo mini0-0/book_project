@@ -33,5 +33,7 @@ urlpatterns = [
     path('book/like/<int:book_isbn>/', views.addWishList, name='like-book'),
 
     path('recommend/',views.book_recommend,name='book-recommend'),
-    # #path('random/', views.get_random, name='book-random'),
+
+    #path('review/wordcloud/', views.review_wordcloud),
+
 ]
