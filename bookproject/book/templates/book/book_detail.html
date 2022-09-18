@@ -23,15 +23,16 @@
             {% endif %}
         </form> -->
 
-         <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
-            {% csrf_token %}
-            {% if wished %}
-            <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
-            {% else %}
-            <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
-            {% endif %}
-        </form>
-
+        
+            <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
+                {% csrf_token %}
+                {% if wished %}
+                <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
+                {% else %}
+                <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
+                {% endif %}
+            </form>
+       
         <h2>{{ book.book_title }}에 대한 리뷰</h2>
         {% for review in reviews %}
             {% if review.book.book_title == book.book_title %}
