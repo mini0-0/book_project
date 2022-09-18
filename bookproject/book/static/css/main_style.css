@@ -202,9 +202,14 @@ h2 {
    z-index: 0;
    padding: 0 8px;
    width: 184px;
- }
+}
 
-h3, h5 {
+h3 {
+   font-size: 20px;
+   color: #363864;
+}
+
+h5 {
    color: #363864;
 }
 
