@@ -11,7 +11,7 @@
     <br>
     {% for book in page_obj %}
         <table>
-            <td><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></td>
+            <td> <a href="{{ book.get_absolute_url }}"><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></a></td>
             <td id="book_detail">
                 <h4>제목 : {{ book.book_title }}</h4>
                 <h5>저자 : {{ book.book_author }}</h5>

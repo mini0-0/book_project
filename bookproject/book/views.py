@@ -200,7 +200,6 @@ class BookList(ListView):
 def bookDetail(request,book_isbn):
     user = request.user
     book = Book.objects.get(book_isbn=book_isbn)
-    book_list=Book.objects.all()
     reviews = Review.objects.all()
     try:
         wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
@@ -216,8 +215,7 @@ def bookDetail(request,book_isbn):
             'book': book,
             'wishList': WishBookList,
             'wished' : wished,
-            'reviews':reviews,
-            'book_list':book_list,
+            'reviews': reviews,
         }
     )
 
