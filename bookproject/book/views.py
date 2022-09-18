@@ -206,7 +206,11 @@ class BookList(ListView):
 
 def bookDetail(request,book_isbn):
     user = request.user
-    book = Book.objects.get(book_isbn=book_isbn)
+    try:
+        book = Book.objects.get(book_isbn=book_isbn)
+    except:
+        bookMultiple = Book.objects.filter(book_isbn=book_isbn)
+        book = bookMultiple[0]
     reviews = Review.objects.all()
     try:
         wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
