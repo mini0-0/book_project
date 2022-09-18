@@ -1,16 +1,12 @@
+{% extends 'book/base.html' %}
 {% load static %}
 
 
+{% block content %}
 <link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}">
 
-<DOCTYPE HTML5>
-    <html>
-
-    <head>
-        <meta charset="UTF-8">
-        <title>책 리스트</title>
-    </head>
-
+    <title>책 리스트</title>
+    
     <body>
         {% if wishList.exists %}
         {% for b in wishList %}
@@ -23,4 +19,4 @@
 
     </body>
 
-    </html>
+ {% endblock content%}

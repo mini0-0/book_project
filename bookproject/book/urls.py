@@ -29,7 +29,7 @@ urlpatterns = [
     path('select_genre/<int:genre_id>', views.SelectedGenreList, name='selectd-genre'),
     
     path('book/list', views.BookList.as_view(),name='book-list'),
-    path('book/<int:book_isbn>/', views.bookDetail),
+    path('book/<int:book_isbn>/', views.bookDetail,name='book-detail'),
     path('book/like/<int:book_isbn>/', views.addWishList, name='like-book'),
 
     path('recommend/',views.book_recommend,name='book-recommend'),

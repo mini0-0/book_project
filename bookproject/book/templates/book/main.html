@@ -21,6 +21,7 @@
         {% endif %}
         
         <a href="{% url 'review-list'%}">리뷰 보기</a>
+        <a href={% url 'book-recommend' %}> {{ user.nickname}}님을 위한 책</a>
     </div>
     </header>
 
@@ -62,10 +63,11 @@
                     <div class="flex-container book">
                         <section id="pageSection">
                             <div class="page" id="page1">
-                                <img src="{{ i.book_img_url }}" alt="My Image" width=200px height=auto>
+                                <a href="{{ i.get_absolute_url }}"><img src="{{ i.book_img_url }}" alt="My Image" width=200px height=auto></a>
+        
                             </div>
                             <div class="page" id="page2">
-                                <h3> {{ i.book_title }} </h3>
+                                <h3>{{ i.book_title }}</h3>
                                 <h5> 작가 : {{ i.book_author }} </h3>
                                 <h5> 출판사 : {{ i.book_publisher }} </h3>
                                 <h5> 장르 : {{ i.genre_name }} </h3>

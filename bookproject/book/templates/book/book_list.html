@@ -1,17 +1,14 @@
-<DOCTYPE HTML5>
-<html>
+{% extends 'book/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
+
+{% block content %}
     <title>책 리스트</title>
-</head>
-<body>
 
-{% for b in book_list %}
-    <hr/>
-    <h2><a href="{{ b.get_absolute_url }}">{{ b.book_title }}</a></h2>
-    <h4>{{ b.book_author}}</h4>
-{% endfor %}
+    {% for b in book_list %}
+        <hr/>
+        <h2><a href="{{ b.get_absolute_url }}">{{ b.book_title }}</a></h2>
+        <h4>{{ b.book_author}}</h4>
+    {% endfor %}
 
-</body>
-</html>
+{% endblock content %}
