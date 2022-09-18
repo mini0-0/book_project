@@ -1,5 +1,25 @@
 {% extends 'book/base.html' %}
 {% load static %}
+
+{% block header%}
+ <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}">
+    <div class="search">
+        <form action="{% url 'search' %}" method="GET">
+            
+            <select name="option_select" id="option">
+                <option value="all">전체</option>
+                <option value="title">제목</option>
+                <option value="author">저자</option>
+                <option value="publisher">출판사</option>
+                <option value="genre">장르</option>
+            </select>
+            <input type="search" name="q" id = "search_box" placeholder="Search">
+            <input type="submit" value="검색" id = "search_btn"> 
+        </form>
+    </div>
+
+{% endblock header %}
+
 {% block content %}
 
 <link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}">
@@ -7,11 +27,12 @@
 <hr>
 
 <div class="search">
+    
     <h3>&nbsp&nbsp&nbsp'{{ search_key }}'의 검색결과</h3>
     <br>
     {% for book in page_obj %}
         <table>
-            <td><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></td>
+            <td> <a href="{{ book.get_absolute_url }}"><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></a></td>
             <td id="book_detail">
                 <h4>제목 : {{ book.book_title }}</h4>
                 <h5>저자 : {{ book.book_author }}</h5>
@@ -25,44 +46,46 @@
     {% endfor %}
     <br/>
     <br/>
-    <ul class="pagination">
+   <ul class="pagination">
         <!-- 이전 페이지 -->
-        {% if page_obj.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}"> ◀ </a>
-        </li>
-        {% endif %}
-
-        <!-- 이전페이지가 없는 경우 -->
-        {% if page_obj.number > page_size|add:'1' %}
-            <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page=1">1</a></li>
-            <li class="page-item"><span class="page-link">...</span></li>
-        {% endif %}
-
-        <!-- page list -->
-        {% for page_number in page_range %}
-            {% if page_number == page_obj.number %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% else %}
+            {% if page_obj.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
+                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}"> ◀ </a>
             </li>
             {% endif %}
-        {% endfor %}
 
-        <!-- next page -->
-        {% if page_obj.number|add:page_size < max_index %}
-            <li class="page-item"><span class="page-link">...</span></li>
-            <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ max_index }}">{{ max_index }}</a></li>
-        {% endif %}
-        
-        {% if page_obj.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q}}&page={{ page_obj.next_page_number }}">▶</a>
-        </li>
-        {% endif %}  
-    </ul>
-{% endblock %}
+            <!-- 이전페이지가 없는 경우 -->
+            {% if page_obj.number > page_size|add:'1' %}
+                <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page=1">1</a></li>
+                <li class="page-item"><span class="page-link">...</span></li>
+            {% endif %}
+
+            <!-- page list -->
+            {% for page_number in page_range %}
+                {% if page_number == page_obj.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+
+            <!-- next page -->
+            {% if page_obj.number|add:page_size < max_index %}
+                <li class="page-item"><span class="page-link">...</span></li>
+                <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ max_index }}">{{ max_index }}</a></li>
+            {% endif %}
+            
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q}}&page={{ page_obj.next_page_number }}">▶</a>
+            </li>
+            {% endif %}  
+        </ul>
 </div>
+{% endblock content %}
+
+

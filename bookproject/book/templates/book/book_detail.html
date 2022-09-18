@@ -23,14 +23,47 @@
             {% endif %}
         </form> -->
 
-        <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
-            {% csrf_token %}
-            {% if wished %}
-            <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
-            {% else %}
-            <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
-            {% endif %}
-        </form>
+        
+            <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
+                {% csrf_token %}
+                {% if wished %}
+                <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
+                {% else %}
+                <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
+                {% endif %}
+            </form>
+       
+        <h2>{{ book.book_title }}에 대한 리뷰</h2>
+        {% for review in reviews %}
+            {% if review.book.book_title == book.book_title %}
+                
+                <a href="{% url 'review-detail' review.id %}">
+                    <section class="cp-card content">
+                        <div class="body">
+                        <span class="cp-chip green"> {{ review.book.book_title}}</span> 
+                        <h2 class="title"> {{review.title}}</h2>
+                        <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
+                        <div class="metadata">
+                            <div class="review-rating">
+                            <span class="cp-stars">
+                                {{ review.rating }}
+                            </span>
+                            </div>
+                            <div class="review-author">
+                            <div class="cp-avatar" style="background-image: url('{{ review.author.profile_pic.url }}')"></div>
+                            <span>{{review.author.nickname}}</span>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+
+                </a>
+            {% endif%}
+        {% empty %} 
+            <h2> 아직 리뷰가 없어요 :(</h2>
+        {% endfor %}
+
+       
         
     </body>
    {% endblock content %}
