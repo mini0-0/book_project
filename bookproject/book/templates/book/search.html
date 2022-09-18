@@ -9,7 +9,7 @@
 <div class="search">
     <h3>&nbsp&nbsp&nbsp'{{ search_key }}'의 검색결과</h3>
     <br>
-    {% for book in search_books %}
+    {% for book in page_obj %}
         <table>
             <td><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></td>
             <td id="book_detail">
@@ -21,7 +21,48 @@
         </table>
         <br>
     {% empty %}
-<!--        <a>검색 결과가 없습니다.</a> -->
+        <a>검색 결과가 없습니다.</a>
     {% endfor %}
+    <br/>
+    <br/>
+    <ul class="pagination">
+        <!-- 이전 페이지 -->
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}"> ◀ </a>
+        </li>
+        {% endif %}
+
+        <!-- 이전페이지가 없는 경우 -->
+        {% if page_obj.number > page_size|add:'1' %}
+            <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page=1">1</a></li>
+            <li class="page-item"><span class="page-link">...</span></li>
+        {% endif %}
+
+        <!-- page list -->
+        {% for page_number in page_range %}
+            {% if page_number == page_obj.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ page_number }}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+
+        <!-- next page -->
+        {% if page_obj.number|add:page_size < max_index %}
+            <li class="page-item"><span class="page-link">...</span></li>
+            <li class="page-item"><a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q }}&page={{ max_index }}">{{ max_index }}</a></li>
+        {% endif %}
+        
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="/search/?option_select={{ request.GET.option_select }}&q={{ request.GET.q}}&page={{ page_obj.next_page_number }}">▶</a>
+        </li>
+        {% endif %}  
+    </ul>
 {% endblock %}
 </div>

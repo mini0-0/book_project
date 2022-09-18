@@ -1,10 +1,12 @@
 from multiprocessing import context
+from operator import index
+from urllib.error import ContentTooShortError
 from django.db.models import Q
 from django.urls import reverse
 from django.shortcuts import render,redirect,get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from random import *
-# from .forms import SignupForm
 from .forms import UserForm
 from django.views.generic import(
     DetailView, UpdateView, ListView, CreateView, DeleteView
@@ -122,29 +124,59 @@ class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
 
 
 def search(request) :
-    if request.method == "GET":
-        search_key = request.GET['q']
-        option_select = request.GET.getlist('option_select',None)
-        
-        if 'all' in option_select :
-            search_books = Book.objects.filter(Q(book_title__icontains = search_key) | Q(book_publisher__icontains = search_key) | Q(book_author__icontains = search_key) | Q(genre_name__icontains = search_key))
-
-        elif 'title' in option_select :
-            search_books = Book.objects.filter(Q(book_title__icontains = search_key))
-
-        elif 'author' in option_select :
-            search_books = Book.objects.filter(Q(book_author__icontains = search_key))
-
-        elif 'publisher' in option_select :
-            search_books = Book.objects.filter(Q(book_publisher__icontains = search_key))
-
-        elif 'genre' in option_select :
-            search_books = Book.objects.filter(Q(genre_name__icontains = search_key))
-
-        return render(request,'book/search.html', {'search_books': search_books, 'search_key': search_key})
+    search_key = request.GET.get('q')
+    option_select = request.GET.getlist('option_select',None)
+    search_books = Book.objects.all().order_by('book_isbn')
     
-    else:
-        return render(request, 'book/main.html')
+    if 'all' in option_select :
+        search_books = search_books.filter(Q(book_title__icontains = search_key) | Q(book_publisher__icontains = search_key) | Q(book_author__icontains = search_key) | Q(genre_name__icontains = search_key))
+
+    elif 'title' in option_select :
+        search_books = search_books.filter(Q(book_title__icontains = search_key))
+
+    elif 'author' in option_select :
+        search_books = search_books.filter(Q(book_author__icontains = search_key))
+
+    elif 'publisher' in option_select :
+        search_books = search_books.filter(Q(book_publisher__icontains = search_key))
+
+    # elif 'genre' in option_select :
+    else :
+        search_books = search_books.filter(Q(genre_name__icontains = search_key))
+    
+    # page = request.GET.get('page',1)
+    page = int(request.GET.get('page',1))
+    paginator = Paginator(search_books,5)
+    # page_obj = paginator.page(page)
+
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+
+    index = page_obj.number
+    max_index = len(paginator.page_range)
+    page_size = 5
+
+    start_index = index - page_size if index > page_size else 1
+
+    if index + page_size == max_index :
+        end_index = max_index
+    else :
+        end_index = index + page_size if index <= max_index else max_index
+
+    page_range = list(paginator.page_range[start_index-1:end_index])
+    context = {
+        'search_key': search_key,
+        'page_obj': page_obj,
+        'page_range' : page_range,
+        'max_index' : max_index,
+        'page_size' : page_size
+    }
+
+    return render(request,'book/search.html', context)
 
 
 # 장르선택
@@ -217,7 +249,6 @@ def addWishList(request, book_isbn):
         wish_list.delete()
         wished=False
 
-    
     return render(
         request,
         'book/book_detail.html',
