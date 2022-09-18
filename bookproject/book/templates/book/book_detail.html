@@ -2,17 +2,24 @@
 {% load static %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/book_detail_style.css' %}">
+
+<hr>
+
         <title>책 상세보기</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/book_detail.css' %}">
+<!--        
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  
+-->  
     <body width="100%" height="100%">
-        <h2>{{book.book_title}}</h2>
-        <img src="{{book.book_img_url}}" alt="My Image" width=200px height=auto>
-        <p>작가: {{book.book_author}}</p>
-        <p>출판사: {{book.book_publisher}}</p>
-        <p>장르: {{book.genre_name}}</p>
+        <img src="{{book.book_img_url}}" alt="My Image" width=300px height=auto>
+        <div id="book_detail">
+            <h2>{{book.book_title}}</h2>
+            <h4>작가: {{book.book_author}}</p>
+            <h4>출판사: {{book.book_publisher}}</p>
+            <h4>장르: {{book.genre_name}}</p>
+        </div>
 
         <!-- <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
             {% csrf_token %}

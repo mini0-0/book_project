@@ -1,9 +1,15 @@
 {% extends 'book/base.html' %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block title %}프로필 수정 | 북&장 {% endblock title %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_update.css' %}">
+
+<hr>
+
 <main class="profile-form">
   <form method="post" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
@@ -13,20 +19,25 @@
         {{ form.profile_pic }}
       </div>
     </div>
+    <p id="change_nickname">닉네임 수정</p>
+    
     <div class="nickname">
       {{ form.nickname|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:닉네임" }}
       {% for error in form.nickname.errors %}
         <div class="error-message">{{ error }}</div>
       {% endfor %}
     </div>
+
+    <p id="change_self-intro">자기소개</p>
     <div class="content">
       {{ form.intro|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:자신을 소개해 주세요!" }}
       {% for error in form.intro.errors %}
         <div class="error-message">{{ error }}</div>
       {% endfor %}
     </div>
+    <p id="change_image">이미지 수정</p>
     <div class="buttons">
-      <a class="cp-button secondary cancel" href="{% url 'profile' user.id %}">취소</a>
+      <a class="cp-button secondary cancel" id="cancel_link" href="{% url 'profile' user.id %}">취소</a>
       <button class="cp-button" type="submit">완료</button>
     </div>
   </form>

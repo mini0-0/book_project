@@ -4,79 +4,87 @@
 {% block title %}{{ profile_user.nickname }} | <a href="{% url 'main' %}">Book</a> {% endblock title %} 
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_style.css' %}">
+
+<hr>
+
 <main class="site-body">
   <div class="profile-header">
     <div class="content max-content-width">
       <div class="profile-pic">
-        <img src="{{ profile_user.profile_pic.url }}" width="100" height="100">
+        <img src="{{ profile_user.profile_pic.url }}" width="130" height="130">
       </div>
       <div class="info">
         <h3 class="username"> 닉네임: {{ profile_user.nickname}}</h3>
 
         {% if profile_user == user %}
-          <a href="{% url 'profile-update'%}">
+          <a href="{% url 'profile-update'%}" id="edit_profile_link">
             프로필 수정
           </a> 
-          &#183;
-          <a class="edit" href="{% url 'account_change_password' %}">
+
+          <a class="edit" href="{% url 'account_change_password' %}" id="change_pw_link">
             비밀번호 변경
           </a>
         {% endif %}
         
-        {% if profile_user.intro %}
-        <div>
-          <p class="intro"> 
-            <h3>소개</h3>
-              <p>{{ profile_user.intro }}</p>
+        
+          <div class="intro">
+              <h3>소개 :</h3>
+              {% if profile_user.intro %}
+                <p>{{ profile_user.intro }}</p>
+              {% else %}
+                <p>아직 소개글이 없습니다. </p>
+              {% endif %}
           </div>
-       {% endif %}
+        
        
-        </div>
+      </div>
       <div>
         <a class="wishList" href="{% url 'profile-wishList' %}">
            위시리스트
         </a>
       </div> 
 
-       <div class="header">
-      <h2>{{ profile_user.nickname }}님의 최신 리뷰</h2>
-      {% if user_reviews %}
-        <a href="{% url 'user-review-list' profile_user.id %}">
-          리뷰 전체보기
-      </a>
-      {% endif %}
-    </div>
+      <div class="header">
+        <h2>{{ profile_user.nickname }}님의 최신 리뷰</h2>
+        {% if user_reviews %}
+          <a href="{% url 'user-review-list' profile_user.id %}" id="whole_review">
+            리뷰 전체보기
+        </a>
+        {% endif %}
+      </div>
 
-    <div class="contents">
-      {% for review in user_reviews %}
-      <a href="{% url 'review-detail' review.id %}">
-        <div class="cp-card content">
-          <div class="body">
-            <span class="cp-chip green">{{ review.author }}</span>
-            <h2 class="title">{{ review.title }}</h2>
-            <date class="date">{{ review.dt_created|date:"Y년 n월 j일" }}</date>
-            <div class="metadata">
-              <div class="review-rating">
-                <span class="cp-stars">
-                  {{ review.rating }}
-                </span>
-              </div>
-              <div class="review-author">
-                <div
-                  class="cp-avatar"
-                  style="background-image: url('{{ review.author.profile_pic.url }}')"
-                ></div>
-                <span>{{ review.author.nickname }}</span>
+      <div class="contents">
+        {% for review in user_reviews %}
+        <a href="{% url 'review-detail' review.id %}">
+          <div class="cp-card content">
+            <div class="body">
+              <span class="cp-chip green">{{ review.author }}</span>
+              <h2 class="title">{{ review.title }}</h2>
+              <date class="date">{{ review.dt_created|date:"Y년 n월 j일" }}</date>
+              <div class="metadata">
+                <div class="review-rating">
+                  <span class="cp-stars">
+                    {{ review.rating }}
+                  </span>
+                </div>
+                <div class="review-author">
+                  <div
+                    class="cp-avatar"
+                    style="background-image: url('{{ review.author.profile_pic.url }}')"
+                  ></div>
+                  <span>{{ review.author.nickname }}</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </a>
-      {% empty %}
-        <p class="empty">아직 리뷰가 없어요 :(</p> 
-      {% endfor %}
+        </a>
+        {% empty %}
+          <p class="empty">아직 리뷰가 없어요 :(</p> 
+        {% endfor %}
       </div>
     </div>
   </div>  
-  </main>
+</main>
 {% endblock content %}

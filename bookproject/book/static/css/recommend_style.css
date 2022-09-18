@@ -1,0 +1,79 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    left: 20%;
+}
+
+hr {
+
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+h2 {
+    position: relative;
+    top: 80px;
+    font-size: 23px;
+    color: #363864;
+    left: 15%;
+    margin-top: 20px;
+ }
+
+.random {
+    position : absolute;
+    left : 5%;
+ 
+ }
+ #pageSection{
+    position: relative;
+    top: 70px;
+    width: 200px;
+    height: 350px;
+    margin-left: 70px;
+ }
+ 
+ .page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+ }
+ 
+ #page1 {
+    z-index: 1;
+    transform-origin: left center;
+    transition-duration: 1s;
+    transition-timing-function: ease-in;
+    width: 200px;
+    height: 200px;
+  }
+  
+ #page1:hover {
+    transform: rotateY(-180deg);
+    opacity: 0.4;
+  }
+  
+ #page2 {
+    text-align: center;
+    z-index: 0;
+    padding: 0 8px;
+    width: 184px;
+  }
+ 
+ h3, h5 {
+    color: #363864;
+ }
+ 
+ .flex-container {
+    display: flex;
+    position: relative;
+    left: 100px;
+    width: 250px;
+ }
+ 
+ .flex-container .book {
+    flex-wrap: wrap;
+ }

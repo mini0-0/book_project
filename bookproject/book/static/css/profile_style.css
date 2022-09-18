@@ -1,0 +1,90 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    left: 20%;
+}
+
+hr {
+
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+.profile-pic {
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+
+.username{
+    position: absolute;
+    top: 18%;
+    left: 35%;
+    color: #363864;
+}
+
+#edit_profile_link {
+    position: absolute;
+    top: 32%;
+    left: 35%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #363864;
+}
+
+#change_pw_link {
+    position: absolute;
+    top: 32%;
+    left: 41%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #363864;
+}
+
+.wishList {
+    position: absolute;
+    top: 32%;
+    left: 48%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #363864;
+}
+
+h3 {
+    position: absolute;
+    top: 24.5%;
+    left: 35%;
+    color: #363864;
+}
+
+.intro p {
+    color: #363864;
+    position: absolute;
+    left: 38.4%;
+    top: 25%;
+}
+
+.header {
+    color: #363864;
+    position: absolute;
+    left: 25%;
+    top: 40%;
+}
+
+
+.contents p {
+    color: #363864;
+    position: absolute;
+    left: 27%;
+    top: 48%;
+}
+
+#whole_review {
+    position: absolute;
+    left: 20%;
+    top: 100%;
+    color: #363864;
+}

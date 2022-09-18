@@ -8,8 +8,8 @@
 
 p {
     position: absolute;
-    top: 0px;
-    right: 30px;
+    top: -5px;
+    right: 200px;
     font-size: 20px;
     color: #363864;
     font-weight: 600;
@@ -17,8 +17,8 @@ p {
 
 #login_link{
     position: absolute;
-    top: 50px;
-    right: 110px;
+    top: 65px;
+    right: 280px;
     font-size: 16px;
     font-weight: 500;
     color: #363864; 
@@ -26,8 +26,8 @@ p {
 
  #signup_link{
     position: absolute;
-    top: 50px;
-    right: 30px;
+    top: 65px;
+    right: 200px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
@@ -36,8 +36,8 @@ p {
 
  #write_review_link{
    position: absolute;
-   top: 50px;
-   right: 200px;
+   top: 65px;
+   right: 370px;
    font-size: 16px;
    font-weight: 500;
    color: #363864; 
@@ -45,8 +45,8 @@ p {
 
  #myprofile_link{
     position: absolute;
-    top: 50px;
-    right: 110px;
+    top: 65px;
+    right: 282px;
     font-size: 16px;
     font-weight: 500;
     color: #363864; 
@@ -54,12 +54,30 @@ p {
 
  #logout_link{
     position: absolute;
-    top: 50px;
-    right: 30px;
+    top: 65px;
+    right: 200px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
     
+ }
+
+ #read_review_link {
+   position: absolute;
+   top: 43px;
+   right: 200px;
+   font-size: 16px;
+   font-weight: 500;
+   color: #363864;
+ }
+
+ #user_recommend_link {
+   position: absolute;
+   top: 43px;
+   right: 290px;
+   font-size: 16px;
+   font-weight: 500;
+   color: #363864;
  }
 
  hr {
@@ -73,7 +91,7 @@ p {
 select {
    position: absolute;
    top: 25px;
-   left: 40%;
+   left: 35%;
    border-radius: 5px;
    border: 3px solid #FFC1AB;
    width: 100px; 
@@ -101,11 +119,11 @@ option:checked, option:hover {
 #search_box {
    position: absolute;
    top: 25px;
-   left: 46.2%;
+   left: 41.2%;
    font-size: 13px;
    width: 300px; 
    height: 40px;
-   border-radius: 5px;
+   border-radius: 5px 0 0 5px;
    border: 3px solid #FFC1AB;
 }
 
@@ -116,27 +134,43 @@ input:focus {
 #search_btn {
    position: absolute;
    top: 25px;
-   left: 63.5%;
+   left: 58.8%;
    width : 80px;
    height : 40px;
-   border: 3px solid #FFC1AB;
-   border-radius: 0 5px 5px 0;
-   background-color: #FFC1AB;
-   color: white;
    font-weight: 800;
    font-size: 15px;
+   display: inline-block;
+   outline: 0;
+   cursor: pointer;
+   border-radius: 0 5px 5px 0;
+   border: 2px solid #FFC1AB;
+   color: #FFC1AB;
+   background: 0 0;
+   box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+}
+
+#search_btn:hover{
+   background-color: #FFC1AB;
+   color: #fff;
 }
 
 h2 {
+   position: relative;
+   top: 80px;
    font-size: 23px;
-    color: #363864;
-    position: relative;
-    left: 25%;
-    margin-top: 20px;
+   color: #363864;
+   left: 15%;
+   margin-top: 20px;
 }
 
+.random {
+   position : absolute;
+   left : 5%;
+
+}
 #pageSection{
    position: relative;
+   top: 70px;
    width: 200px;
    height: 350px;
    margin-left: 70px;
@@ -178,9 +212,56 @@ h3, h5 {
    display: flex;
    position: relative;
    left: 100px;
-   width: 1500px;
+   width: 250px;
 }
 
 .flex-container .book {
    flex-wrap: wrap;
+}
+
+#select_Genre{
+   position: absolute;
+   left: 15%;
+   color: #363864;
+   width : 150px;
+   height : 30px;
+   border: 3px solid #FFC1AB;
+   border-radius: 5px;
+   font-weight: 800;
+   font-size: 15px;
+   display: inline-block;
+   outline: 0;
+   cursor: pointer;
+   color: #FFC1AB;
+   background: 0 0;
+   box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+}
+
+#select_Genre:hover{
+   background-color: #FFC1AB;
+   color: #fff;
+}
+
+#wish_List{
+   position: absolute;
+   left: 15%;
+   top: 18%;
+   color: #363864;
+   width : 150px;
+   height : 30px;
+   border: 3px solid #FFC1AB;
+   border-radius: 5px;
+   font-weight: 800;
+   font-size: 15px;
+   display: inline-block;
+   outline: 0;
+   cursor: pointer;
+   color: #FFC1AB;
+   background: 0 0;
+   box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
+}
+
+#wish_List:hover{
+   background-color: #FFC1AB;
+   color: #fff;
 }

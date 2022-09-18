@@ -5,12 +5,13 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}">
 
+<hr>
+
     <title>책 리스트</title>
     
     <body>
         {% if wishList.exists %}
         {% for b in wishList %}
-        <hr />
         <h2>{{ b.book_id.book_title }}</h2>
         {% endfor %}
         {% else %}

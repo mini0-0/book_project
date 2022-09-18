@@ -1,3 +1,25 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    left: 20%;
+}
+
+hr {
+
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+h2 {
+    color: #363864;
+    position: absolute;
+    left: 25%;
+    
+}
+
 h3 {
     font-size: 23px;
     color: #363864;
