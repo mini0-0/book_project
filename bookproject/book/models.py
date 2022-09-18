@@ -46,7 +46,6 @@ class WishBookList(models.Model):
         "User", related_name="wish_user", on_delete=models.CASCADE, null=True)
     book_id = models.ForeignKey(
         "Book", related_name="wish_book", on_delete=models.CASCADE, null=True)
-
     # count = models.PositiveIntegerField()
 
     def __str__(self):

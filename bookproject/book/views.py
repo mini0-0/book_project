@@ -12,18 +12,12 @@ from django.views.generic import(
 from book.forms import ProfileForm, ReviewForm
 from braces.views import LoginRequiredMixin, UserPassesTestMixin
 from allauth.account.views import PasswordChangeView
-from book.models import Genre, User, Book, WishBookList, Review, Tag
+from book.models import Genre, User, Book, WishBookList, Review
 from book.functions import confirmation_required_redirect
 from gensim.models import word2vec
-import urllib.request
+from django.core.paginator import Paginator
 import pandas as pd
-import numpy as np
-from gensim.models import Word2Vec
-from gensim.models import KeyedVectors
 from sklearn.metrics.pairwise import cosine_similarity
-from django.views.decorators.csrf import csrf_exempt
-from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-import re
 
 df = pd.DataFrame(list(Book.objects.all().values()))
 wish = pd.DataFrame(list(WishBookList.objects.all().values()))
@@ -36,11 +30,9 @@ def main(request):
     for i in range(0,20):
         ran_list.append(Book.objects.order_by("?")[i])
 
-    reviews = Review.objects.order_by('-dt_created')
     context={
         'r_book':r_book,
         'ran_list':ran_list,
-        'reviews':reviews
         
     }
     return render(request,'book/main.html',context)
@@ -90,7 +82,7 @@ class ProfileView(DetailView):
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         user_id = self.kwargs.get('user_id')
-        context['user_reviews'] = Review.objects.filter(author__id=user_id).order_by('-dt_created')[:4]
+        context['user_reviews'] = Review.objects.filter(author__id=user_id).order_by('-dt_created')[:6]
         return context
 
 class ProfileSetView(LoginRequiredMixin,UpdateView):
@@ -122,6 +114,7 @@ class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
 
 
 def search(request) :
+   
     if request.method == "GET":
         search_key = request.GET['q']
         option_select = request.GET.getlist('option_select',None)
@@ -141,7 +134,7 @@ def search(request) :
         elif 'genre' in option_select :
             search_books = Book.objects.filter(Q(genre_name__icontains = search_key))
 
-        return render(request,'book/search.html', {'search_books': search_books, 'search_key': search_key})
+        return render(request,'book/search.html', {'search_books': search_books, 'search_key': search_key })
     
     else:
         return render(request, 'book/main.html')
@@ -178,7 +171,8 @@ class BookList(ListView):
 def bookDetail(request,book_isbn):
     user = request.user
     book = Book.objects.get(book_isbn=book_isbn)
-    
+    book_list=Book.objects.all()
+    reviews = Review.objects.all()
     try:
         wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
         wished=True
@@ -192,7 +186,9 @@ def bookDetail(request,book_isbn):
         {
             'book': book,
             'wishList': WishBookList,
-            'wished' : wished
+            'wished' : wished,
+            'reviews':reviews,
+            'book_list':book_list,
         }
     )
 
@@ -365,7 +361,7 @@ def get_document_vectors(document_list):
     return document_embedding_list
 
 def recommendations(book_title):
-    books = df[['book_title', 'book_img_url']]
+    books = df[['book_title', 'book_img_url','book_author','book_publisher','genre_name','book_isbn']]
     document_embedding_list = get_document_vectors(df['book_plot'])
     cosine_similarities = cosine_similarity(document_embedding_list, document_embedding_list)
 
@@ -384,37 +380,47 @@ def recommendations(book_title):
     # 전체 데이터프레임에서 해당 인덱스의 행만 추출. 5개의 행을 가진다.
     recommend = books.iloc[book_indices].reset_index(drop=True)
 
-    # fig = plt.figure(figsize=(20, 30))
-
-    # # 데이터프레임으로부터 순차적으로 이미지를 출력
-    # for index, row in recommend.iterrows():
-    #     response = requests.get(row['book_img_url'])
-    #     img = Image.open(BytesIO(response.content))
-    #     fig.add_subplot(1, 11, index + 1)
-    #     plt.imshow(img)
-    #     plt.title(row['book_title'])
 
     recommend_list = []
     for index, row in recommend.iterrows():
-        img = row['book_img_url']
-        title = row['book_title']
+        book_img_url = row['book_img_url']
+        book_title = row['book_title']
+        book_publisher = row['book_publisher']
+        genre_name = row['genre_name']
+        book_author = row['book_author']
+        book_isbn = row['book_isbn']
         recommend_list.append(
                 {
-                    'title': title,
-                    'book_img_url':img,
+                    'book_title': book_title,
+                    'book_img_url': book_img_url,
+                    'book_publisher': book_publisher,
+                    'genre_name':genre_name,
+                    'book_author':book_author,
+                    'book_isbn':book_isbn,
                 })
 
     return recommend_list
 
 def book_recommend(request):
-    #wish_book = WishBookList.objects.all()
     book_recommend = recommendations("하룻밤에 읽는 숨겨진 세계사")
-
-    #recommend = recommendations(wish[['book_title'])
+    book_list = Book.objects.all()
+    #board_list = Board.objects.all() #models.py Board 클래스의 모든 객체를 board_list에 담음
+    # board_list 페이징 처리
+    page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(book_recommend, '10') #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.page(page) #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+    #return render(request, 'template_name', {'page_obj':page_obj}) 
+    # book = Book.objects.get(book_isbn=book_isbn)
+    # wish_book = WishBookList.objects.get(book_id=book)
+    # print(wish_book)
+    #recommend = recommendations(wish['book_title'])
     context={
         'book_recommend':book_recommend,
-        #'recommend':recommend,
+        'book_list':book_list,
+        #recommend':recommend,
+        #'wish_book':wish_book,
+        'page_obj':page_obj,
     }
-    return render(request,"book/test.html",context)
+    return render(request,"book/recommend.html",context)
 
 
