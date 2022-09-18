@@ -169,7 +169,6 @@ def SelectedGenreList(request, genre_id):
 
 
 
-
 class BookList(ListView):
     model = Book
     template_name = 'book/book_list.html'
@@ -177,7 +176,13 @@ class BookList(ListView):
 
 def bookDetail(request,book_isbn):
     user = request.user
-    book = Book.objects.get(book_isbn=book_isbn)
+    try:
+        book = Book.objects.get(book_isbn=book_isbn)
+    except:
+        bookList = Book.objects.filter(book_isbn=book_isbn)
+        book = bookList[0]
+
+
     
     try:
         wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
@@ -227,18 +232,21 @@ def addWishList(request, book_isbn):
         }
     )
 
-# def wishListView(request):
-#     user = request.user
-#     user_wishList = WishBookList.objects.filter(user_id=user)
+def wishListView(request):
+    user = request.user
+    user_wishList = WishBookList.objects.filter(user_id=user)
+    wishList_title=[]
+    for b in user_wishList:
+        wish_book_title = b.book_id.book_title
+        wishList_title.append(wish_book_title)
 
-
-#     return render(
-#         request,
-#         'profile/profile_wishList.html',
-#         {
-#             'wishList' : user_wishList
-#         }
-#     )
+    return render(
+        request,
+        'profile/profile_wishList.html',
+        {
+            'wishList' : user_wishList
+        }
+    )
 
 class WishList(ListView):
     model = Book
@@ -250,7 +258,6 @@ class WishList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #user_id = self.kwargs.get('user_id')
         context['wishList'] = WishBookList.objects.filter(user_id=self.request.user)
         return context
 
