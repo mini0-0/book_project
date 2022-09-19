@@ -229,7 +229,11 @@ def bookDetail(request,book_isbn):
 
 def addWishList(request, book_isbn):
     user = request.user
-    book = Book.objects.get(book_isbn=book_isbn)
+    try:
+        book = Book.objects.get(book_isbn=book_isbn)
+    except:
+        bookMultiple = Book.objects.filter(book_isbn=book_isbn)
+        book = bookMultiple[0]
 
     # 위시리스트 추가
     if request.POST.get('wish-cancle') == None:
