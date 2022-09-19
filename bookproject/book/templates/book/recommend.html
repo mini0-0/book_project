@@ -8,7 +8,7 @@
     <hr>
     <header class="site-header navbar">
 
-        <h2>{{ user.nickname}}님 맞춤 랜덤 책 리스트 </h2>
+        <!-- <h2>{{ user.nickname}}님 맞춤 랜덤 책 리스트 </h2>
     <br>
         <div class="random">
             {% comment %} {% for t in wishlist_title%}
@@ -43,7 +43,49 @@
                         </tr>
                 </table>
             </div>
-        </div>
+        </div> -->
+
+        <h2>{{ user.nickname}}님 맞춤 랜덤 책 리스트 </h2>
+        <div class="random">
+            {% comment %} {% for t in wishlist_title%}
+                <p><h2> #{{ t }}</h2><p>
+            {% endfor %} {% endcomment %}
+                <div style="display: flex;">
+                    <table>
+                        <tr>
+    
+                    {% for i in re_list%}
+                        {% for b in i %}
+                        <td>
+                            <div class="flex-container book">
+                                <section id="pageSection">
+                                    <div class="page" id="page1">
+                                        <a href="http://127.0.0.1:8000/book/{{ i.book_isbn }}/">
+                                            <img src="{{ b.book_img_url }}" alt="My Image" width=200px height=auto>
+                                        </a>
+                                    </div>
+                                    <div class="page" id="page2">
+                                        <h3> {{ b.book_title }}</h3>
+                                        <h5> 작가 : {{ b.book_author }} </h3>
+                                        <h5> 출판사 : {{ b.book_publisher }} </h3>
+                                        <h5> 장르 : {{ b.genre_name }} </h3>
+                                    </div>
+                                </section>
+                            </div>
+                        </td>
+                        {% if forloop.counter|divisibleby:5 %}
+                        </tr>
+                        <tr>
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                </tr>
+            </table>
+    
+                </div>
+    
+        <div>
+    
 
 
 {% endblock content %}
