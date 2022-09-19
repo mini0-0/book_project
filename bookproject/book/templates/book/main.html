@@ -12,6 +12,7 @@
             <a href="{% url 'profile' user.id %}" id = "myprofile_link">내 프로필 </a>
             <a href="{% url 'account_logout' %}" id = "logout_link">로그아웃</a>
             <a href="{% url 'review-create' %}" id = "write_review_link"> 리뷰 작성 </a>
+            <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
             
         {% else %}
             <p> 로그아웃된 상태입니다.</p>
@@ -21,7 +22,7 @@
         {% endif %}
 
         <a href="{% url 'review-list'%}" id="read_review_link">리뷰 보기</a>
-        <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+        
 
     </div>
     </header>
