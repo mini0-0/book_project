@@ -31,7 +31,7 @@
     </div>
 
     <div class="footer">
-      <a class="back-link" href="{% url 'main' %}">&lt; 목록으로</a>
+      <a class="back-link" href="{% url 'review-list' %}">&lt; 목록으로</a>
       {% if review.author == user %}
         <div class="buttons">
           <a class="cp-button warn" href="{% url 'review-delete' review.id %}">삭제</a>

@@ -11,11 +11,11 @@
     
     <body>
         {% if wishList.exists %}
-        {% for b in wishList %}
-        <h2>{{ b.book_id.book_title }}</h2>
-        {% endfor %}
+            {% for b in wishList %}
+                <h2>{{ b.book_id.book_title }}</h2>
+            {% endfor %}
         {% else %}
-        <h3>위시리스트가 비어있습니다.</h3>
+            <h3>위시리스트가 비어있습니다.</h3>
         {% endif %}
 
     </body>

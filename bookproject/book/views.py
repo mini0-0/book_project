@@ -203,6 +203,7 @@ class BookList(ListView):
 
 def bookDetail(request,book_isbn):
     user = request.user
+    book_list = Book.objects.all()
     try:
         book = Book.objects.get(book_isbn=book_isbn)
     except:
@@ -224,6 +225,7 @@ def bookDetail(request,book_isbn):
             'wishList': WishBookList,
             'wished' : wished,
             'reviews': reviews,
+            'book_list':book_list,
         }
     )
 
@@ -406,14 +408,14 @@ def recommendations(book_title):
     # 입력된 책과 줄거리(document embedding)가 유사한 책 15개 선정.
     sim_scores = list(enumerate(cosine_similarities[idx]))
     sim_scores = sorted(sim_scores, key = lambda x: x[1], reverse = True)
-    sim_scores = sim_scores[1:16]
+    sim_scores = sim_scores[1:11]
 
+    
     # 가장 유사한 책 15권의 인덱스
     book_indices = [i[0] for i in sim_scores]
 
     # 전체 데이터프레임에서 해당 인덱스의 행만 추출. 5개의 행을 가진다.
     recommend = books.iloc[book_indices].reset_index(drop=True)
-
 
     recommend_list = []
     for index, row in recommend.iterrows():
@@ -442,44 +444,19 @@ def book_recommend(request):
     for b in user_wishList:
         wish_book_title = b.book_id.book_title
         wishlist_title.append(wish_book_title)
-    #board_list = Board.objects.all() #models.py Board 클래스의 모든 객체를 board_list에 담음
-    # board_list 페이징 처리
-    # page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
-    # paginator = Paginator(book_recommend, '10') #Paginator(분할될 객체, 페이지 당 담길 객체수)
-    # page_obj = paginator.page(page) #페이지 번호를 받아 해당 페이지를 리턴 get_page 권장
+
     re_list=[]
     for i in range(len(wishlist_title)):
         re = recommendations(wishlist_title[i])
         re_list.append(re)
-       
 
+    page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
+    paginator = Paginator(re_list, '2') #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    page_obj = paginator.get_page(page) #페이지 번호를 받아 해당 페이지를 리턴
     context={
-        #'book_recommend':book_recommend,
         'wishlist_title':wishlist_title,
-        #'page_obj':page_obj,
         're_list':re_list,
+        'page_obj':page_obj,
     }
     return render(request,"book/recommend.html",context)
 
-
-# @api_view(['GET'])
-# def review_wordcloud(request, book_id):
-#     movie = Book.objects.get(id=book_id) 
-#     all_reviews = movie.review_set.all() # 해당 영화 모든 리뷰
-#     texts = []
-#     for review in all_reviews: # 데이터 전처리
-#         texts.append(review.content) 
-#     stopwords = {'영화', '관람객', '너무', '정말', '보고', '일부', '완전히'} # 불용어
-#     keywords = summarize_with_keywords(texts, min_count=3, max_length=10, # NLP
-#         beta=0.85, max_iter=10, stopwords=stopwords, verbose=True)
-
-#     wordlist = []
-#     count = 0
-#     for key, val in keywords.items(): # 다음 라이브러리를 위한 후처리
-#         temp = {'name': key, 'value': int(val*100)}
-#         wordlist.append(temp)
-#         count += 1
-#         if count >= 30: # 출력 수 제한
-#             break
-
-#     return Response(wordlist)
