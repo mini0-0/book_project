@@ -4,24 +4,28 @@
 {% providers_media_js %}
 
 {% block header %}
-    <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}">
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}?what">
     <header class="site-header navbar">
+    <hr>
     <div class="content max-width">
         {% if user.is_authenticated %}
             <p> 안녕하세요, {{user.nickname}}님 </p>
-            <a href="{% url 'profile' user.id %}" id = "myprofile_link">내 프로필 </a>
+            
             <a href="{% url 'account_logout' %}" id = "logout_link">로그아웃</a>
-            <a href="{% url 'review-create' %}" id = "write_review_link"> 리뷰 작성 </a>
             <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+            <a href="{% url 'review-list'%}" id="in_read_review_link">리뷰 보기</a>
+            <a href="{% url 'profile' user.id %}" id = "myprofile_link">내 프로필 </a>
+            <a href="{% url 'review-create' %}" id = "write_review_link"> 리뷰 작성 </a>
             
         {% else %}
             <p> 로그아웃된 상태입니다.</p>
             <a href="{% url 'login' %}" id = "login_link" >로그인</a>
             <a href="{% url 'signup' %}" id = "signup_link">회원가입</a>
+            <a href="{% url 'review-list'%}" id="out_read_review_link">리뷰 보기</a>
             
         {% endif %}
 
-        <a href="{% url 'review-list'%}" id="read_review_link">리뷰 보기</a>
+        
         
 
     </div>
@@ -42,7 +46,7 @@
         </form>
     </div>
 
-    <hr>
+
 
     <div class="selectGenre">
         <form action="{% url 'select-genre' %}" method="GET">

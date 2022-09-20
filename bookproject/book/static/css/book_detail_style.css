@@ -3,22 +3,36 @@
     text-decoration-line: none;
     font-size: 35px;
     position: relative;
-    left: 20%;
+    top: 0px;
+    left: 330px;
 }
 
 hr {
-
+    position: relative;
+    top: 0px;
     background-color: #FFC1AB;
     height: 5px;
     border: 0;
 }
 
+img {
+    position: relative;
+    left: 350px;
+    top: -150px;
+}
 
+
+#book_detail {
+    color: #363864;
+    position: relative;
+    top: 50px;
+    left: 700px;
+}
 
 button {
-    position: absolute;
-    left : 55%;
-    top: 55%;
+    position: relative;
+    left : 700px;
+    top: 300px;
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -27,7 +41,6 @@ button {
     color: #FFC1AB;
     background: 0 0;
     padding: 8px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 2px 4px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1.5px 0px;
     font-weight: 800;
     font-size: 16px;
     height: 42px;
@@ -38,15 +51,39 @@ button:hover{
     color: #fff;
 }
 
-img {
-    position: absolute;
-    left: 33%;
-    top: 20%;
+#div_review {
+    position: relative;
+    color: #363864;
+    top: -80px;
+    left: 350px;
+    line-height: 30px;
 }
 
-#book_detail {
+#div_review h4{
+    left: 10px;
+}
+
+a {
     color: #363864;
-    position: absolute;
-    left: 55%;
-    top: 28%;
+    text-decoration-line: none;
+}
+
+
+
+table {
+    width: 1000px;
+    border-top: 1px solid #FFC1AB;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid #FFC1AB;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#re_ {
+    font-weight: 700;
+    font-size: 17px;
 }

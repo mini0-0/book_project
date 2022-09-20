@@ -55,3 +55,11 @@ h4, h5 {
 .page-item.active .page-link {
     color: darksalmon;
 }
+
+a{
+    position: relative;
+    left: 400px;
+    font-size: 15px;
+    color: #363864;
+    font-weight: 600;
+}

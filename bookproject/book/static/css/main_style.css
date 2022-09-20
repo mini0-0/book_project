@@ -1,33 +1,42 @@
 #site_name {
-    color: #363864;
-    text-decoration-line: none;
-    font-size: 35px;
-    position: relative;
-    left: 20%;
+   color: #363864;
+   text-decoration-line: none;
+   font-size: 35px;
+   position: relative;
+   top: 0px;
+   left: 330px;
+}
+
+hr {
+   position: relative;
+   top: 0px;
+   background-color: #FFC1AB;
+   height: 5px;
+   border: 0;
 }
 
 p {
-    position: absolute;
-    top: -5px;
-    right: 200px;
+    position: relative;
+    top: -100px;
+    left: 1265px;
     font-size: 20px;
     color: #363864;
     font-weight: 600;
 }
 
 #login_link{
-    position: absolute;
-    top: 65px;
-    right: 280px;
+    position: relative;
+    top: -95px;
+    left: 1350px;
     font-size: 16px;
     font-weight: 500;
     color: #363864; 
  }
 
  #signup_link{
-    position: absolute;
-    top: 65px;
-    right: 200px;
+    position: relative;
+    top: -95px;
+    left: 1360px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
@@ -35,46 +44,55 @@ p {
  }
 
  #write_review_link{
-   position: absolute;
-   top: 65px;
-   right: 370px;
+   position: relative;
+   top: -95px;
+   left: 870px;
    font-size: 16px;
    font-weight: 500;
    color: #363864; 
 }
 
+#in_read_review_link {
+   position: relative;
+   top: -118px;
+   left: 1178px;
+   font-size: 16px;
+   font-weight: 500;
+   color: #363864;
+ }
+
  #myprofile_link{
-    position: absolute;
-    top: 65px;
-    right: 282px;
+    position: relative;
+    top: -95px;
+    left: 1025px;
     font-size: 16px;
     font-weight: 500;
     color: #363864; 
  }
 
  #logout_link{
-    position: absolute;
-    top: 65px;
-    right: 200px;
+    position: relative;
+    top: -95px;
+    left: 1400px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
     
  }
 
- #read_review_link {
-   position: absolute;
-   top: 43px;
-   right: 200px;
+ #out_read_review_link {
+   position: relative;
+   top: -118px;
+   left: 1283px;
    font-size: 16px;
    font-weight: 500;
    color: #363864;
  }
 
  #user_recommend_link {
-   position: absolute;
-   top: 43px;
-   right: 290px;
+   position: relative;
+   top: -118px;
+   left: 1173px;
    font-size: 16px;
    font-weight: 500;
    color: #363864;
@@ -89,9 +107,9 @@ p {
 
 
 select {
-   position: absolute;
-   top: 25px;
-   left: 35%;
+   position: relative;
+   top: -155px;
+   left: 580px;
    border-radius: 5px;
    border: 3px solid #FFC1AB;
    width: 100px; 
@@ -117,9 +135,9 @@ option:checked, option:hover {
 */
 
 #search_box {
-   position: absolute;
-   top: 25px;
-   left: 41.2%;
+   position: relative;
+   top: -156px;
+   left: 580px;
    font-size: 13px;
    width: 300px; 
    height: 40px;
@@ -132,9 +150,9 @@ input:focus {
 }
 
 #search_btn {
-   position: absolute;
-   top: 25px;
-   left: 58.8%;
+   position: relative;
+   top: -154.5px;
+   left: 572px;
    width : 80px;
    height : 40px;
    font-weight: 800;
@@ -154,23 +172,67 @@ input:focus {
    color: #fff;
 }
 
+#select_Genre{
+   position: relative;
+   top: -120px;
+   left: 250px;
+   color: #363864;
+   width : 150px;
+   height : 30px;
+   border: 3px solid #FFC1AB;
+   border-radius: 5px;
+   font-weight: 800;
+   font-size: 15px;
+   display: inline-block;
+   outline: 0;
+   cursor: pointer;
+   color: #FFC1AB;
+   background: 0 0;
+   
+}
+
+#select_Genre:hover{
+   background-color: #FFC1AB;
+   color: #fff;
+}
+
+#wish_List{
+   position: relative;
+   top: -110px;
+   left: 250px;
+   color: #363864;
+   width : 150px;
+   height : 30px;
+   border: 3px solid #FFC1AB;
+   border-radius: 5px;
+   font-weight: 800;
+   font-size: 15px;
+   display: inline-block;
+   outline: 0;
+   cursor: pointer;
+   color: #FFC1AB;
+   background: 0 0;
+   
+}
+
+#wish_List:hover{
+   background-color: #FFC1AB;
+   color: #fff;
+}
+
 h2 {
    position: relative;
-   top: 80px;
+   top: -100px;
    font-size: 23px;
    color: #363864;
-   left: 15%;
+   left: 250px;
    margin-top: 20px;
 }
 
-.random {
-   position : absolute;
-   left : 5%;
-
-}
 #pageSection{
    position: relative;
-   top: 70px;
+   top:-100px;
+   left: 60px;
    width: 200px;
    height: 350px;
    margin-left: 70px;
@@ -222,51 +284,4 @@ h5 {
 
 .flex-container .book {
    flex-wrap: wrap;
-}
-
-#select_Genre{
-   position: absolute;
-   left: 15%;
-   color: #363864;
-   width : 150px;
-   height : 30px;
-   border: 3px solid #FFC1AB;
-   border-radius: 5px;
-   font-weight: 800;
-   font-size: 15px;
-   display: inline-block;
-   outline: 0;
-   cursor: pointer;
-   color: #FFC1AB;
-   background: 0 0;
-   
-}
-
-#select_Genre:hover{
-   background-color: #FFC1AB;
-   color: #fff;
-}
-
-#wish_List{
-   position: absolute;
-   left: 15%;
-   top: 18%;
-   color: #363864;
-   width : 150px;
-   height : 30px;
-   border: 3px solid #FFC1AB;
-   border-radius: 5px;
-   font-weight: 800;
-   font-size: 15px;
-   display: inline-block;
-   outline: 0;
-   cursor: pointer;
-   color: #FFC1AB;
-   background: 0 0;
-   
-}
-
-#wish_List:hover{
-   background-color: #FFC1AB;
-   color: #fff;
 }

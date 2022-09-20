@@ -11,14 +11,14 @@ body {
 }
 
 .loginForm {
-  position:absolute;
+  position:relative;
   width:300px;
   height:400px;
   padding: 30px, 20px;
   background-color:#FFFFFF;
   text-align:center;
-  top:40%;
-  left:50%;
+  top:325px;
+  left:850px;
   transform: translate(-50%,-50%);
   border-radius: 15px;
   color :#414a67;

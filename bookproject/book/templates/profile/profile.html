@@ -5,7 +5,7 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_style.css' %}">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_style.css' %}?after">
 
 <hr>
 
@@ -18,6 +18,15 @@
       <div class="info">
         <h3 class="username"> 닉네임: {{ profile_user.nickname}}</h3>
 
+        <div class="intro">
+          <h3>소개 :</h3>
+          {% if profile_user.intro %}
+            <p>{{ profile_user.intro }}</p>
+          {% else %}
+            <p>아직 소개글이 없습니다. </p>
+          {% endif %}
+        </div>
+
         {% if profile_user == user %}
           <a href="{% url 'profile-update'%}" id="edit_profile_link">
             프로필 수정
@@ -28,17 +37,6 @@
           </a>
         {% endif %}
         
-        
-          <div class="intro">
-              <h3>소개 :</h3>
-              {% if profile_user.intro %}
-                <p>{{ profile_user.intro }}</p>
-              {% else %}
-                <p>아직 소개글이 없습니다. </p>
-              {% endif %}
-          </div>
-        
-       
       </div>
       <div>
         <a class="wishList" href="{% url 'profile-wishList' %}">

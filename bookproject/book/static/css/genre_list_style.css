@@ -3,11 +3,13 @@
     text-decoration-line: none;
     font-size: 35px;
     position: relative;
-    left: 20%;
+    top: 0px;
+    left: 330px;
 }
 
 hr {
-
+    position: relative;
+    top: 0px;
     background-color: #FFC1AB;
     height: 5px;
     border: 0;
@@ -17,14 +19,14 @@ h2 {
     font-size: 23px;
     color: #363864;
     position: relative;
-    left: 25%;
+    left: 420px;
     margin-top: 20px;
 }
 
 ul {
     position: relative;
     top: 10px;
-    left: 30%;
+    left: 505px;
     color: #363864;
     font-weight: 800;
     

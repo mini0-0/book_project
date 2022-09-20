@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/book_detail_style.css' %}">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/book_detail_style.css' %}?after">
 
 <hr>
 
@@ -12,14 +12,23 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 -->  
+    <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
+            {% csrf_token %}
+            {% if wished %}
+            <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
+            {% else %}
+            <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
+            {% endif %}
+    </form>
+
     <body width="100%" height="100%">
-        <img src="{{book.book_img_url}}" alt="My Image" width=300px height=auto>
         <div id="book_detail">
             <h2>{{book.book_title}}</h2>
             <h4>작가: {{book.book_author}}</p>
             <h4>출판사: {{book.book_publisher}}</p>
             <h4>장르: {{book.genre_name}}</p>
         </div>
+        <img src="{{book.book_img_url}}" alt="My Image" width=300px height=auto>
 
         <!-- <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
             {% csrf_token %}
@@ -31,44 +40,64 @@
         </form> -->
 
         
-            <form action="{% url 'like-book' book.book_isbn %}" method='POST'>
-                {% csrf_token %}
-                {% if wished %}
-                <button type="submit" class="btn btn-outline-success" name="wish-cancle">위시리스트 취소</button>
-                {% else %}
-                <button type="submit" class="btn btn-outline-success" name="wish-add">위시리스트 추가</button>
-                {% endif %}
-            </form>
+        
        
-        <h2>{{ book.book_title }}에 대한 리뷰</h2>
-        {% for review in reviews %}
-            {% if review.book.book_title == book.book_title %}
-                
-                <a href="{% url 'review-detail' review.id %}">
-                    <section class="cp-card content">
-                        <div class="body">
-                        <span class="cp-chip green"> {{ review.book.book_title}}</span> 
-                        <h2 class="title"> {{review.title}}</h2>
-                        <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
-                        <div class="metadata">
-                            <div class="review-rating">
-                            <span class="cp-stars">
-                                {{ review.rating }}
-                            </span>
-                            </div>
-                            <div class="review-author">
-                            <div class="cp-avatar" style="background-image: url('{{ review.author.profile_pic.url }}')"></div>
-                            <span>{{review.author.nickname}}</span>
-                            </div>
-                        </div>
-                        </div>
-                    </section>
+        <div id="div_review">
+            <h2>'{{ book.book_title }}'에 대한 리뷰</h2>
+            <table>
 
-                </a>
-            {% endif%}
-        {% empty %} 
-            <h2> 아직 리뷰가 없어요 :(</h2>
-        {% endfor %}
+                    
+                        {% for review in reviews %}
+                            {% if review.book.book_title == book.book_title %}
+                            {% if forloop.counter == 2 %}
+
+                                <td id="re_">리뷰 제목</td>
+                                <td id="re_">작성자</td>
+                                <td id="re_">평점</td>
+                                <td id="re_">작성날짜</td>
+                            </tr>
+                            {% endif %}
+                            <tr>
+                                <section class="cp-card content">
+                                    <div class="body">
+                                        <!--<span class="cp-chip green"> {{ review.book.book_title}}</span>--> 
+                                        <td><a href="{% url 'review-detail' review.id %}">
+                                            <div class="title"> {{review.title}}</div>
+                                        </a></td>
+                                        <td><a href="{% url 'review-detail' review.id %}">  
+                                            <div class="review-author">
+                                                <img src="./prac1_images/profile_img.jpg" alt="" />
+                                                <!--<img src="url('{{ review.author.profile_pic.url }}')" >-->
+                                                <span>{{review.author.nickname}}</span>
+                                            </div>
+                                        </a></td>
+                                        
+                                        <td><a href="{% url 'review-detail' review.id %}">                                        
+                                            <div class="review-rating">
+                                                <span class="cp-stars">
+                                                    {{ review.rating }}
+                                                </span>
+                                            </div>
+                                        </a></td>
+                                        <td><a href="{% url 'review-detail' review.id %}">
+                                            <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
+                                        </a></td>
+                                    </div>
+                                </section>
+                            {% endif%}
+                            {% if forloop.counter >= 2 %}
+                            </tr>
+                            {% endif %}
+                            
+                            {% empty %} 
+                                <h4> 아직 리뷰가 없어요 :(</h4>
+                            {% endfor %}
+
+            </table>
+                    
+                
+                        
+        </div>
 
        
         

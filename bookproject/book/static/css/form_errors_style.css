@@ -1,7 +1,7 @@
 .alert {
-    position: absolute;
-    top: 21%;
-    right: 15%;
+    position: relative;
+    top: -360px;
+    left: 1140px;
     width: 300px;
     font-size:15px;
     color: red;
