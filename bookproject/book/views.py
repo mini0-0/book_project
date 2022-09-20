@@ -117,8 +117,8 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
 
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
     def get_success_url(self):
-        return reverse('profile',kwargs=({'user_id':self.request.user.id})) 
-
+        return reverse('profile',kwargs=({'user_id':self.request.user.id}))
+ 
 # 검색
 def search(request) :
     search_key = request.GET.get('q')

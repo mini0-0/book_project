@@ -38,10 +38,8 @@ urlpatterns = [
         name='account_email_confirmation_done',
     ),
     
-    path(
-        'password/change/',
-        CustomPasswordChangeView.as_view(),
-        name='account_password_change',),
+    path('password/change/',
+        CustomPasswordChangeView.as_view(),name='account_password_change',),
     path('accounts/',include('allauth.urls')),
     path('api-auth/', include('rest_framework.urls')),
     
