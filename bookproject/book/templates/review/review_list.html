@@ -4,32 +4,60 @@
 {% providers_media_js %}
 
 {% block content %}
- <div class="contents">
-      {% for review in reviews %}
-        <a href="{% url 'review-detail' review.id %}">
-            <section class="cp-card content">
-                <div class="body">
-                <span class="cp-chip green"> {{ review.book.book_title}}</span> 
-                <h2 class="title"> {{review.title}}</h2>
-                <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
-                <div class="metadata">
-                    <div class="review-rating">
-                    <span class="cp-stars">
-                        {{ review.rating }}
-                    </span>
-                    </div>
-                    <div class="review-author">
-                      <div class="cp-avatar" style="background-image: url('{{ review.author.profile_pic.url }}')"></div>
-                    <span>{{review.author.nickname}}</span>
-                    </div>
-                </div>
-                </div>
-            </section>
-        </a>
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_list_style.css' %}?after">
+
+<hr>
+
+  <h2>북&장에 등록된 모든 리뷰</h2>
+
+ <div class="div_review">
+  <table>
+    {% for review in reviews %}
+      {% if forloop.counter == 1 %}
+
+        <td id="re_">리뷰 제목</td>
+        <td id="re_">작성자</td>
+        <td id="re_">평점</td>
+        <td id="re_">작성날짜</td>
+        </tr>
+      {% endif %}
+      <tr>
+      <section class="cp-card content">
+        <div class="body">
+          <!--<span class="cp-chip green"> {{ review.book.book_title}}</span>--> 
+          <td><a href="{% url 'review-detail' review.id %}">
+            <div class="title"> {{review.title}}</div>
+          </a></td>
+          <td><a href="{% url 'review-detail' review.id %}">  
+            <div class="review-author">
+              <img src="./prac1_images/profile_img.jpg" alt="" />
+              <!--<img src="url('{{ review.author.profile_pic.url }}')" >-->
+              <span>{{review.author.nickname}}</span>
+            </div>
+          </a></td>
+        
+          <td><a href="{% url 'review-detail' review.id %}">                                        
+            <div class="review-rating">
+              <span class="cp-stars">
+                {{ review.rating }}
+              </span>
+            </div>
+          </a></td>
+          <td><a href="{% url 'review-detail' review.id %}">
+            <date class="date">{{ review.dt_created|date:"Y년 n월 j일"}}</date>
+          </a></td>
+        </div>
+      </section>
+      {% if forloop.counter >= 2 %}
+        </tr>
+      {% endif %}
       {% empty %}
         <p class="empty">
-            아직 리뷰가 없어요 :(
+          아직 리뷰가 없어요 :(
         </p>
-      {% endfor %} 
-    </div>
+    {% endfor %}  
+  </table>
+
+  </div>
 {% endblock content %}

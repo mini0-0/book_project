@@ -1,0 +1,66 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    top: 0px;
+    left: 300px;
+ }
+ 
+ hr {
+    position: relative;
+    top: 0px;
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+ }
+
+ h2{
+    position: relative;
+    color: #363864;
+    top: 50px;
+    left: 350px;
+    line-height: 30px;
+ }
+
+
+ #div_review {
+    position: relative;
+    color: #363864;
+    top: 300px;
+    left: 350px;
+    line-height: 30px;
+}
+
+#div_review h4{
+    left: 10px;
+}
+
+a {
+    color: #363864;
+    text-decoration-line: none;
+}
+
+
+
+table {
+    position: relative;
+    top: 70px;
+    left: 350px;
+    width: 1000px;
+    border-top: 1px solid #FFC1AB;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid #FFC1AB;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#re_ {
+    font-weight: 700;
+    font-size: 17px;
+    color: #363864;
+}

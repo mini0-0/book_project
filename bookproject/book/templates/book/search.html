@@ -1,8 +1,34 @@
 {% extends 'book/base.html' %}
 {% load static %}
 
-{% block header%}
- <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}">
+{% block header %}
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}?hello">
+    <header class="site-header navbar">
+    <hr>
+    <div class="content max-width">
+        {% if user.is_authenticated %}
+            <p> 안녕하세요, {{user.nickname}}님 </p>
+            
+            <a href="{% url 'account_logout' %}" id = "logout_link">로그아웃</a>
+            <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+            <a href="{% url 'review-list'%}" id="in_read_review_link">리뷰 보기</a>
+            <a href="{% url 'profile' user.id %}" id = "myprofile_link">내 프로필 </a>
+            <a href="{% url 'review-create' %}" id = "write_review_link"> 리뷰 작성 </a>
+            
+        {% else %}
+            <p> 로그아웃된 상태입니다.</p>
+            <a href="{% url 'login' %}" id = "login_link" >로그인</a>
+            <a href="{% url 'signup' %}" id = "signup_link">회원가입</a>
+            <a href="{% url 'review-list'%}" id="out_read_review_link">리뷰 보기</a>
+            
+        {% endif %}
+
+        
+        
+
+    </div>
+    </header>
+
     <div class="search">
         <form action="{% url 'search' %}" method="GET">
             
@@ -18,15 +44,7 @@
         </form>
     </div>
 
-{% endblock header %}
-
-{% block content %}
-
-<link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}?after">
-
-<hr>
-
-<div class="search">
+<div class="search_result">
     
     <h3>&nbsp&nbsp&nbsp'{{ search_key }}'의 검색결과</h3>
     <br>
@@ -42,7 +60,7 @@
         </table>
         <br>
     {% empty %}
-        <a>검색 결과가 없습니다.</a>
+        <a id="none">검색 결과가 없습니다.</a>
     {% endfor %}
     <br/>
     <br/>
@@ -86,6 +104,6 @@
             {% endif %}  
         </ul>
 </div>
-{% endblock content %}
+{% endblock header %}
 
 
