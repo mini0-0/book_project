@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}?hello">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}?after">
 
 <hr>
 
@@ -15,7 +15,7 @@
             <h2>{{ user.nickname }}님의 위시리스트</h2>
             {% if wishList.exists %}
                 {% for b in wishList %}
-                    <p><a href="{{ b.book_id.get_absolute_url }}">{{ b.book_id.book_title }}</a></p>
+                    <p><a id="book_link" href="{{ b.book_id.get_absolute_url }}">{{ b.book_id.book_title }}</a></p>
                 {% endfor %}
             {% else %}
                 <h3>위시리스트가 비어있습니다.</h3>

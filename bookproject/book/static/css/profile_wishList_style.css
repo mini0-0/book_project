@@ -39,3 +39,9 @@ h3 {
     left: 25%;
     margin-top: 20px;    
 }
+
+#book_link {
+    text-decoration-line: none;
+    color: #363864;
+    font-weight: 500;
+}
