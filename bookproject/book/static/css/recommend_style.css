@@ -72,6 +72,10 @@ hr {
    padding: 0 8px;
    width: 184px;
 }
+
+#page2 a{
+   text-decoration-line: none;
+}
  
 h3 {
    font-size: 20px;

@@ -77,10 +77,12 @@
     
                                 </div>
                                 <div class="page" id="page2">
-                                    <h3>{{ i.book_title }}</h3>
-                                    <h5> 작가 : {{ i.book_author }} </h5>
-                                    <h5> 출판사 : {{ i.book_publisher }} </h5>
-                                    <h5> 장르 : {{ i.genre_name }} </h5>
+                                    <a href="{{ i.get_absolute_url }}">
+                                        <h3>{{ i.book_title }}</h3>
+                                        <h5> 작가 : {{ i.book_author }} </h5>
+                                        <h5> 출판사 : {{ i.book_publisher }} </h5>
+                                        <h5> 장르 : {{ i.genre_name }} </h5>
+                                    </a>
                                 </div>
                             </section>
                         </div> 

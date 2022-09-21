@@ -4,7 +4,7 @@
 
 {% block content %}
     
-    <link rel="stylesheet" type="text/css" href = "{% static 'css/recommend_style.css' %}?hello">
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/recommend_style.css' %}?after">
     <hr>
     <header class="site-header navbar">
         <h2 id="title">{{ user.nickname}}님 맞춤 랜덤 책 리스트 </h2>
@@ -27,10 +27,12 @@
                                     </a>
                                 </div>
                                 <div class="page" id="page2">
-                                    <h3> {{ b.book_title }}</h3>
-                                    <h5> 작가 : {{ b.book_author }} </h3>
-                                    <h5> 출판사 : {{ b.book_publisher }} </h3>
-                                    <h5> 장르 : {{ b.genre_name }} </h3>
+                                    <a href={% url 'book-detail' b.book_isbn %}>
+                                        <h3> {{ b.book_title }}</h3>
+                                        <h5> 작가 : {{ b.book_author }} </h3>
+                                        <h5> 출판사 : {{ b.book_publisher }} </h3>
+                                        <h5> 장르 : {{ b.genre_name }} </h3>
+                                    </a>
                                 </div>
                             </section>
                         </div>

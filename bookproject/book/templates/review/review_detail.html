@@ -5,27 +5,35 @@
 {% block title %} {{ review.title }} | 북&장 {% endblock title %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_detail_style.css' %}?after">
+
+<hr>
+
 <main class="site-body">
   <article class="review-detail max-content-width">
     <div class="review-info">
+      <img src="{{review.book.book_img_url}}" alt="My Image" width=300px height=auto>
       <div class="restaurant-name">
-        <span class="cp-chip green"> <h2> 책제목 &nbsp;{{ review.book.book_title }} </h2> </span>
+        <span class="cp-chip green"> <h2> 책제목 : &nbsp;{{ review.book.book_title }} </h2> </span>
       </div>
-      <h1 class="title"> 제목 &nbsp;{{ review.title }}</h1>
+      <h1 class="title"> 리뷰 제목 : &nbsp;{{ review.title }}</h1>
       <div class="author">
         <a class="review-author" href="{% url 'profile' review.author.id %}">
           <div class="cp-avatar" style="background-image: url('{{ review.author.profile_pic.url }}')"></div>
           <span>{{ review.atuhor.nickname }}</span>
         </a>
       </div>
-      <date class="date">날짜 &nbsp;{{ review.dt_created|date:"Y년 n월 j일"}}</date>
-      <div>
-        내용 &nbsp;{{ review.review_context }}
-      </div>
+      <date class="date">작성 날짜 : &nbsp;{{ review.dt_created|date:"Y년 n월 j일"}}</date>
       <div class="review-rating">
         <span class="cp-stars">
-          평점 &nbsp;{{ review.rating }}
+          평점 : &nbsp;{{ review.rating }}
         </span>
+      </div>
+      
+      <div id="content">
+        내용
+        <p>&nbsp;{{ review.review_context }}</p>
       </div>
       
     </div>
@@ -34,8 +42,8 @@
       <a class="back-link" href="{% url 'review-list' %}">&lt; 목록으로</a>
       {% if review.author == user %}
         <div class="buttons">
-          <a class="cp-button warn" href="{% url 'review-delete' review.id %}">삭제</a>
-          <a class="cp-button secondary" href="{% url 'review-update' review.id %}">수정</a>
+          <a class="secondary" href="{% url 'review-update' review.id %}">수정</a>
+          <a class="warn" href="{% url 'review-delete' review.id %}">삭제</a>
         </div>
       {% endif %}
     </div>

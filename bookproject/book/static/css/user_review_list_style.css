@@ -63,3 +63,11 @@ td {
    top: 130px;
    left: 780px;
 }
+
+.pagination {
+   position: relative;
+    left: 750px;
+    top: -100px;
+    display: flex;
+    list-style: none;
+}
