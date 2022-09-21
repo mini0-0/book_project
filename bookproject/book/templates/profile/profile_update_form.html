@@ -6,21 +6,15 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_update.css' %}">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_update_form.css' %}">
 
 <hr>
 
 <main class="profile-form">
   <form method="post" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
-    <div class="profile">
-      <div class="profile-pic cp-avatar large" style="background-image: url('{{ user.profile_pic.url }}')"></div>
-      <div class="file">
-        {{ form.profile_pic }}
-      </div>
-    </div>
-    <p id="change_nickname">닉네임 수정</p>
     
+    <p id="change_nickname">닉네임 수정</p>
     <div class="nickname">
       {{ form.nickname|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:닉네임" }}
       {% for error in form.nickname.errors %}
@@ -28,6 +22,14 @@
       {% endfor %}
     </div>
 
+    <p id="change_image">이미지 수정</p>
+    <div class="profile">
+      <div class="profile-pic cp-avatar large" style="background-image: url('{{ user.profile_pic.url }}')"></div>
+      <div class="file">
+        {{ form.profile_pic }}
+      </div>
+    </div>
+    
     <p id="change_self-intro">자기소개</p>
     <div class="content">
       {{ form.intro|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:자신을 소개해 주세요!" }}
@@ -35,10 +37,10 @@
         <div class="error-message">{{ error }}</div>
       {% endfor %}
     </div>
-    <p id="change_image">이미지 수정</p>
+
     <div class="buttons">
-      <a class="cp-button secondary cancel" id="cancel_link" href="{% url 'profile' user.id %}">취소</a>
       <button class="cp-button" type="submit">완료</button>
+      <a class="cp-button secondary cancel" id="cancel_link" href="{% url 'profile' user.id %}">취소</a>
     </div>
   </form>
 </main>

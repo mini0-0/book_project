@@ -17,76 +17,104 @@
 
 .profile-pic {
     position: relative;
-    top: 20%;
-    left: 25%;
+    top: 50px;
+    left: 380px;
 }
 
 .username{
-    position: absolute;
-    top: 18%;
-    left: 35%;
+    position: relative;
+    top: -90px;
+    left: 540px;
+    color: #363864;
+}
+
+.intro h3 {
+    position: relative;
+    top: -90px;
+    left: 540px;
+    color: #363864;
+}
+
+.intro p {
+    color: #363864;
+    position: relative;
+    left: 600px;
+    top: -132px;
+}
+
+.wishList {
+    position: relative;
+    top: -129.5px;
+    left: 540px;
+    font-size: 16px;
+    font-weight: 500;
     color: #363864;
 }
 
 #edit_profile_link {
-    position: absolute;
-    top: 32%;
-    left: 35%;
+    position: relative;
+    top: -151px;
+    left: 635px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
 }
 
 #change_pw_link {
-    position: absolute;
-    top: 32%;
-    left: 41%;
+    position: relative;
+    top: -151px;
+    left: 650px;
     font-size: 16px;
     font-weight: 500;
     color: #363864;
 }
 
-.wishList {
-    position: absolute;
-    top: 32%;
-    left: 48%;
-    font-size: 16px;
-    font-weight: 500;
-    color: #363864;
-}
 
-h3 {
-    position: absolute;
-    top: 24.5%;
-    left: 35%;
+.header h2 {
     color: #363864;
-}
-
-.intro p {
-    color: #363864;
-    position: absolute;
-    left: 38.4%;
-    top: 25%;
-}
-
-.header {
-    color: #363864;
-    position: absolute;
-    left: 25%;
-    top: 40%;
+    position: relative;
+    left: 380px;
+    top: -105px;
 }
 
 
 .contents p {
     color: #363864;
-    position: absolute;
-    left: 27%;
-    top: 48%;
+    position: relative;
+    left: 410px;
+    top: -110px;
 }
 
+
 #whole_review {
-    position: absolute;
-    left: 20%;
-    top: 100%;
+    position: relative;
+    left: 635px;
+    top: -150px;
     color: #363864;
+}
+
+table a {
+    color: #363864;
+    text-decoration-line: none;
+}
+
+table {
+    position: relative;
+    left: 380px;
+    top: -130px;
+    width: 1000px;
+    border-top: 1px solid #FFC1AB;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid #FFC1AB;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#re_ {
+    font-weight: 700;
+    font-size: 17px;
 }
