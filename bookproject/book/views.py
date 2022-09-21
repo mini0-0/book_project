@@ -1,10 +1,15 @@
+
+from contextlib import nullcontext
 from multiprocessing import context
+from urllib import request
 from django.db.models import Q
 from django.urls import reverse
 from django.shortcuts import render,redirect,get_object_or_404, redirect
 from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
 from random import *
+
+from formatter import NullFormatter
 from .forms import UserForm
 from django.views.generic import(
     DetailView, UpdateView, ListView, CreateView, DeleteView
@@ -282,8 +287,11 @@ class WishList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        #user_id = self.kwargs.get('user_id')
-        context['wishList'] = WishBookList.objects.filter(user_id=self.request.user)
+        user_id = self.kwargs.get('user_id')
+        try:
+            context['wishList'] = WishBookList.objects.filter(user_id=self.request.user)
+        except:
+            context['user_id'] = "no"
         return context
 
 
