@@ -32,7 +32,7 @@ class ReviewForm(forms.ModelForm):
             "book",
             "review_context",
             "rating",
-
+            "tag",
             ]
 
         widgets = {

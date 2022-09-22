@@ -1,7 +1,9 @@
+from email.policy import default
 from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .validators import validate_no_special_characters
+from tagging.fields import TagField 
 
 
 class User(AbstractUser):
@@ -72,20 +74,21 @@ class Review(models.Model):
         (10, 10)
     )
     rating = models.IntegerField(choices=RATIMG_CHOICES, default=None)
+    tag = TagField(default="")
 
     def __str__(self):
         return self.title
 
 
-class Tag(models.Model):
-    tag_name = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=20, allow_unicode=True)
+# class Tag(models.Model):
+#     tag_name = models.CharField(max_length=50)
+#     slug = models.SlugField(max_length=20, allow_unicode=True)
 
-    def __str__(self):
-        return self.tag_name
+#     def __str__(self):
+#         return self.tag_name
 
-    def get_absolute_url(self):
-        return f'/tag/{self.slug}'
+#     def get_absolute_url(self):
+#         return f'/tag/{self.slug}'
 
 
 class Genre(models.Model):

@@ -34,13 +34,20 @@
       {% endfor  %}
     </div>
 
-     <div class="rating">
+    <div class="rating">
       <div class="cp-ic-button">
          {{ form.rating }}
         {% for error in form.rating.errors %}
           <div class="error-message"> {{error}}</div>
-      {% endfor  %}
+        {% endfor  %}
       </div>
+    </div>
+
+    <div class="tag">
+      {{ form.tag|add_class:"cp-input"|attr:"placeholder:태그"}}
+      {% for error in form.tag.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
     </div>
 
 
