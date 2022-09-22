@@ -1,0 +1,16 @@
+{% extends "book/base.html" %}
+
+{% block title %}tagging_review_list.html{% endblock %}
+
+{% block content %}
+
+<div id="content">
+    <h1>Reviews for tag - {{ tag.name }}</h1>
+    {% for review in object_list %}
+        <h2><a href="{% url 'review-detail' review.id %}"> {{ review.title }}</a></h2>
+        {{ review.dt_updated|date:"Y년 n월 j일" }}
+        <p>{{ review.review_context }}</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

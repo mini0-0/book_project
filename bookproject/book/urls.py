@@ -19,6 +19,10 @@ urlpatterns = [
     path('reviews/<int:review_id>/delete/', views.ReviewDeleteView.as_view(), name='review-delete'),
     path('reviews/', views.ReviewView.as_view(),name='review-list'),
 
+    # tag
+    path('tags/', views.TagCloudTV.as_view(), name='tag_cloud'),
+    path('tags/<str:tag>/', views.ReviewTagOL.as_view(), name='tagged_object_list'),
+
     # account
     path('login/', views.loginview, name='login'),
     path('signup/', views.signup, name='signup'),

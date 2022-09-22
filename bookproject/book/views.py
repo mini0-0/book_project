@@ -12,7 +12,7 @@ from random import *
 from formatter import NullFormatter
 from .forms import UserForm
 from django.views.generic import(
-    DetailView, UpdateView, ListView, CreateView, DeleteView
+    DetailView, UpdateView, ListView, CreateView, DeleteView, TemplateView
 )
 from book.forms import ProfileForm, ReviewForm
 from braces.views import LoginRequiredMixin, UserPassesTestMixin
@@ -23,6 +23,10 @@ from gensim.models import word2vec
 from django.core.paginator import Paginator
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+
+from tagging.models import Tag, TaggedItem #추가
+from tagging.views import TaggedObjectList #추가
+
 # import konlpy 
 # from konlpy.tag import Okt,Twitter 
 # from collections import Counter
@@ -295,13 +299,26 @@ class WishList(ListView):
         return context
 
 
-# review
+# Review, Tag
+class TagCloudTV(TemplateView):
+    template_name='tagging/tagging_cloud.html'
+
+class ReviewView(ListView):
+    model = Review
+    template_name = "review/review_list.html"
+    context_object_name = "reviews"
+    paginate_by = 6
+    ordering = ["-dt_created"]
+
+class ReviewTagOL(TaggedObjectList):
+    model=Review
+    template_name='tagging/tagging_review_list.html'
+
 class ReviewDetailView(DetailView):
     model = Review
     template_name = 'review/review_detail.html'
     pk_url_kwarg = 'review_id'
-
-
+    
 class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     form_class = ReviewForm
@@ -337,7 +354,6 @@ class ReviewUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         else:
             return False
 
-
 class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Review
     template_name = 'review/review_confirm_delete.html'
@@ -356,12 +372,7 @@ class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         else:
             return False
 
-class ReviewView(ListView):
-    model = Review
-    template_name = "review/review_list.html"
-    context_object_name = "reviews"
-    paginate_by = 6
-    ordering = ["-dt_created"]
+
 
 
 class UserReviewListView(ListView):
