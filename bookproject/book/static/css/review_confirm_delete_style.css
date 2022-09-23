@@ -1,0 +1,36 @@
+.content_review {
+    color: #414a67 ;
+    position: relative;
+    top: -70px;
+    left: 700px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cp-button-warn{
+    position:relative;
+    left:550px;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:80px;
+    height:35px;
+    background: #ffaf97 ;
+    background-position: left;
+    color:white;
+    font-size : 16px;
+    font-weight: bold;
+    border:none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+
+.cp-button-secondary  {
+    position:relative;
+    top: 35px;
+    left:450px;
+    color: #414a67 ;
+}

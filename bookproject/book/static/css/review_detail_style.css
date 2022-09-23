@@ -50,12 +50,13 @@
  #content p{
     color: #363864;
     position: relative;
-    top: -20px;
-    left: -5px;
+    top: -10px;
+    left: 0px;
     font-size: 16px;
     font-weight: 400;
-    line-height: 50px;
+    line-height: 30px;
  }
+
 
  .back-link{
     color: #363864;

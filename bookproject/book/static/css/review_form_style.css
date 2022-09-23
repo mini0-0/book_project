@@ -1,0 +1,142 @@
+.book h3 {
+    position: relative;
+    top: -100px;
+    left: 470px;
+    color: #363864;
+}
+
+.book select {
+    position: relative;
+    top: -153px;
+    left: 600px;
+    border-radius: 5px;
+    border: 3px solid #FFC1AB;
+    width: 680px; 
+    height: 40px;
+    padding: .8em .5em; 
+    font-size: 13px;
+    background: url('../img/select_option_arrow.jpg') no-repeat right 10px center; /* 네이티브 화살표 대체 */  
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+ 
+ }
+ .book select:focus {
+    border: 3px solid #FFC1AB;
+    outline: none;
+ }
+
+ .rating h3 {
+    position: relative;
+    top: -130px;
+    left: 470px;
+    color: #363864;
+}
+ .rating select {
+    position: relative;
+    top: -183px;
+    left: 600px;
+    border-radius: 5px;
+    border: 3px solid #FFC1AB;
+    width: 100px; 
+    height: 40px;
+    padding: .8em .5em; 
+    font-size: 13px;
+    background: url('../img/select_option_arrow.jpg') no-repeat right 10px center; /* 네이티브 화살표 대체 */  
+    -webkit-appearance: none; /* 네이티브 외형 감추기 */
+    -moz-appearance: none;
+    appearance: none;
+ }
+
+ .rating select:focus {
+    border: 3px solid #FFC1AB;
+    outline: none;
+ }
+
+ .title h3{
+    position: relative;
+    top: -160px;
+    left: 470px;
+    color: #363864;
+ }
+
+ .title input {
+    position: relative;
+    top: -213px;
+    left: 600px;
+    font-size: 15px;
+    border: 3px solid #FFC1AB;
+    height: 32px;
+    width: 670px;
+    border-radius: 5px;
+ }
+
+.review_content {
+    position: relative;
+    top: -168px;
+    left: 470px;
+    font-size: 17px;
+    border: 3px solid #FFC1AB;
+    width: 800px;
+    height: 180px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.tag h4 {
+    position: relative;
+    top: -180px;
+    left: 590px;
+    color: #363864;
+}
+
+#id_tag {
+    position: relative;
+    top: -228px;
+    left: 640px;
+    font-size: 14px;
+    border-bottom: 3px solid #FFC1AB;
+    BORDER-LEFT: medium none;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;
+    height: 30px;
+    width: 500px;
+}
+
+textarea {
+    resize: none;
+    border: none;
+}
+
+textarea:focus {
+    outline: none;  
+}
+
+.buttons button{
+    position:relative;
+    top: -180px;
+    left: 870px;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+    width:80px;
+    height:35px;
+    background: #ffaf97 ;
+    background-position: left;
+    color:white;
+    font-size : 16px;
+    font-weight: bold;
+    border:none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+}
+
+.buttons .cp-button-secondary {
+    position:relative;
+    top: -140px;
+    left: 770px;
+    color: #414a67 ;
+}
