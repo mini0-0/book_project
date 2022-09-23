@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block header %}
-    <link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}?hello">
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}?hi">
     <header class="site-header navbar">
     {% comment %} <hr> 
     <div class="content max-width">
@@ -52,10 +52,10 @@
         <table>
             <td> <a href="{{ book.get_absolute_url }}"><img src="{{ book.book_img_url }}" alt="My Image" width=200px height=auto></a></td>
             <td id="book_detail">
-                <h4>제목 : {{ book.book_title }}</h4>
-                <h5>저자 : {{ book.book_author }}</h5>
-                <h5>출판사 : {{ book.book_publisher }}</h5>
-                <h5>장르 : {{ book.genre_name }}</h5>
+                <a href="{{ book.get_absolute_url }}"><h4>제목 : {{ book.book_title }}</h4></a>
+                <a href="{{ book.get_absolute_url }}"><h5>저자 : {{ book.book_author }}</h5></a>
+                <a href="{{ book.get_absolute_url }}"><h5>출판사 : {{ book.book_publisher }}</h5></a>
+                <a href="{{ book.get_absolute_url }}"><h5>장르 : {{ book.genre_name }}</h5></a>
             </td>
         </table>
         <br>

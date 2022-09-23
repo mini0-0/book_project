@@ -1,14 +1,17 @@
 {% extends "book/base.html" %}
+{% load static %}
 
 {% block title %}tagging_review_list.html{% endblock %}
 
 {% block content %}
 
-<div id="content">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/tagging_review_list_style.css' %}?hi">
+
+<div id="tag_content">
     <h1>Reviews for tag - {{ tag.name }}</h1>
     {% for review in object_list %}
         <h2><a href="{% url 'review-detail' review.id %}"> {{ review.title }}</a></h2>
-        {{ review.dt_updated|date:"Y년 n월 j일" }}
+        <p>{{ review.dt_updated|date:"Y년 n월 j일" }}</p>
         <p>{{ review.review_context }}</p>
     {% endfor %}
 </div>

@@ -18,7 +18,7 @@
  h2{
     position: relative;
     color: #363864;
-    top: 50px;
+    top: -80px;
     left: 350px;
     line-height: 30px;
  }
@@ -31,14 +31,14 @@
 
 a {
    color: #363864;
-   text-decoration-line: none;
+
 }
 
 
 
 table {
    position: relative;
-   top: 70px;
+   top:-60px;
    left: 350px;
    width: 1000px;
    border-top: 1px solid #FFC1AB;
@@ -58,16 +58,20 @@ td {
    color: #363864;
 }
 
+.contents a {
+   text-decoration-line: none;
+}
+
 .cp-ic-button{
    position: relative;
-   top: 130px;
+   top: 0px;
    left: 780px;
 }
 
 .pagination {
    position: relative;
     left: 750px;
-    top: -100px;
+    top: -230px;
     display: flex;
     list-style: none;
 }
