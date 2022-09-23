@@ -7,9 +7,6 @@
 {% block content %}
 
 <link rel="stylesheet" type="text/css" href = "{% static 'css/profile_update_form.css' %}?hello">
-
-<hr>
-
 <main class="profile-form">
   <form method="post" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
@@ -31,7 +28,7 @@
     </div>
     
     <p id="change_self-intro">자기소개</p>
-    <div class="content">
+    <div class="self_content">
       {{ form.intro|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:자신을 소개해 주세요!" }}
       {% for error in form.intro.errors %}
         <div class="error-message">{{ error }}</div>

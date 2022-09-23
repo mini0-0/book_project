@@ -1,37 +1,20 @@
-#site_name {
-    color: #363864;
-    text-decoration-line: none;
-    font-size: 35px;
-    position: relative;
-    top: 0px;
-    left: 300px;
- }
- 
- hr {
-    position: relative;
-    top: 0px;
-    background-color: #FFC1AB;
-    height: 5px;
-    border: 0;
- }
- 
  img {
     position: relative;
-    top: 90px;
+    top: -40px;
     left: 350px;
  }
 
  h2 {
     color: #363864;
     position: relative;
-    top: -330px;
+    top: -460px;
     left: 700px;
  }
 
  .title {
     color: #363864;
     position: relative;
-    top: -330px;
+    top: -460px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -40,7 +23,7 @@
  .date {
     color: #363864;
     position: relative;
-    top: -330px;
+    top: -460px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -49,7 +32,7 @@
 .cp-stars {
     color: #363864;
     position: relative;
-    top: -330px;
+    top: -460px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -59,7 +42,7 @@
  #content {
     color: #363864;
     position: relative;
-    top: -330px;
+    top: -460px;
     left: 700px;
     font-weight: 550;
  }
@@ -77,20 +60,20 @@
  .back-link{
     color: #363864;
     position: relative;
-    top: -250px;
+    top: -380px;
     left: 700px;
  }
 
 .secondary {
     color: #363864;
     position: relative;
-    top: -272px;
+    top: -402px;
     left: 800px;
  }
 
  .warn {
     color: #363864;
     position: relative;
-    top: -272px;
+    top: -402px;
     left: 820px;
  }

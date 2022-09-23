@@ -17,20 +17,20 @@
 
 .profile-pic {
     position: relative;
-    top: 50px;
+    top: -70px;
     left: 380px;
 }
 
 .username{
     position: relative;
-    top: -90px;
+    top: -220px;
     left: 540px;
     color: #363864;
 }
 
 .intro h3 {
     position: relative;
-    top: -90px;
+    top: -220px;
     left: 540px;
     color: #363864;
 }
@@ -39,12 +39,14 @@
     color: #363864;
     position: relative;
     left: 600px;
-    top: -132px;
+    top: -262px;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .wishList {
     position: relative;
-    top: -129.5px;
+    top: -259.5px;
     left: 540px;
     font-size: 16px;
     font-weight: 500;
@@ -53,7 +55,7 @@
 
 #edit_profile_link {
     position: relative;
-    top: -151px;
+    top: -281px;
     left: 635px;
     font-size: 16px;
     font-weight: 500;
@@ -62,7 +64,7 @@
 
 #change_pw_link {
     position: relative;
-    top: -151px;
+    top: -281px;
     left: 650px;
     font-size: 16px;
     font-weight: 500;
@@ -74,7 +76,7 @@
     color: #363864;
     position: relative;
     left: 380px;
-    top: -105px;
+    top: -235px;
 }
 
 
@@ -89,7 +91,7 @@
 #whole_review {
     position: relative;
     left: 635px;
-    top: -150px;
+    top: -280px;
     color: #363864;
 }
 
@@ -101,7 +103,7 @@ table a {
 table {
     position: relative;
     left: 380px;
-    top: -130px;
+    top: -260px;
     width: 1000px;
     border-top: 1px solid #FFC1AB;
     border-collapse: collapse;

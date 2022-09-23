@@ -1,23 +1,6 @@
-#site_name {
-    color: #363864;
-    text-decoration-line: none;
-    font-size: 35px;
-    position: relative;
-    top: 0px;
-    left: 300px;
- }
- 
- hr {
-    position: relative;
-    top: 0px;
-    background-color: #FFC1AB;
-    height: 5px;
-    border: 0;
- }
-
 #change_nickname {
     position: relative;
-    top: 65px;
+    top: -75px;
     left: 640px;
     font-size: 17px;
     color: #363864;
@@ -26,7 +9,7 @@
 
 .nickname input{
     position: relative;
-    top: 23px;
+    top: -113px;
     left: 845px;
     font-size: 17px;
     border-style: solid;
@@ -41,7 +24,7 @@ input:focus {
 
 #change_image {
     position: relative;
-    top: 58px;
+    top: -88px;
     left: 640px;
     font-size: 17px;
     color: #363864;
@@ -51,22 +34,22 @@ input:focus {
 
 .file {
     position: relative;
-    top: 19px;
+    top: -129px;
     left: 845px;
     color: #363864;
 }
 
 #change_self-intro {
     position: relative;
-    top: 33px;
+    top: -103px;
     left: 640px;
     font-size: 17px;
     color: #363864;
     font-weight: 800;
 }
-.content{
+.self_content{
     position: relative;
-    top: -8px;
+    top: -138px;
     left: 845px;
     font-size: 17px;
     border-style: solid;
@@ -87,7 +70,7 @@ textarea:focus {
 
 button {
     position: relative;
-    top: 20px;
+    top: -110px;
     left: 795px;
     background-color: #FFC1AB;
     border: none;
@@ -101,7 +84,7 @@ button {
 
 #cancel_link {
     position: relative;
-    top: 55px;
+    top: -75px;
     left: 733px;
     font-size: 16px;
     font-weight: 500;

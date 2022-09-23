@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/review_detail_style.css' %}?after">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_detail_style.css' %}?hi">
 
 {% comment %} <hr> {% endcomment %}
 
@@ -36,7 +36,7 @@
         <p>&nbsp;{{ review.review_context |linebreaksbr }}</p>
       </div>
 
-      <div>
+      <div id="div_tag">
         <b>TAGS: </b>  
         {% load tagging_tags %} 
         {% tags_for_object object as tags %}

@@ -18,21 +18,25 @@ hr {
 img {
     position: relative;
     left: 350px;
-    top: -150px;
+    top: -300px;
 }
 
 
 #book_detail {
     color: #363864;
     position: relative;
-    top: 50px;
+    top: -100px;
     left: 700px;
+}
+
+#book_detail h2{
+    font-size: 18px;
 }
 
 button {
     position: relative;
     left : 700px;
-    top: 300px;
+    top: 160px;
     display: inline-block;
     outline: 0;
     cursor: pointer;
@@ -54,7 +58,7 @@ button:hover{
 #div_review {
     position: relative;
     color: #363864;
-    top: -80px;
+    top: -270px;
     left: 350px;
     line-height: 30px;
 }
@@ -63,7 +67,7 @@ button:hover{
     left: 10px;
 }
 
-a {
+#div_review a {
     color: #363864;
     text-decoration-line: none;
 }

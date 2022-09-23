@@ -15,7 +15,7 @@ hr {
    border: 0;
 }
 
-p {
+.content p {
     position: relative;
     top: -100px;
     left: 1265px;
@@ -219,8 +219,7 @@ input:focus {
    background-color: #FFC1AB;
    color: #fff;
 }
-
-h2 {
+#random_list_title {
    position: relative;
    top: -100px;
    font-size: 23px;
