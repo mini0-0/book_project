@@ -1,0 +1,59 @@
+.tag-cloud {
+
+    position: relative;
+    top: -80px;
+    left: 530px;
+
+    width: 500px;
+
+    margin-left: 30px;
+
+    text-align: center;
+
+    padding: 5px;
+
+    border: 1px solid #ffd3c0;
+
+    background-color: #ffe8dc;
+
+}
+
+#content h1 {
+    color: #363864;
+    position: relative;
+    top: -100px;
+    left: 700px;
+}
+
+.tag-1 {
+    text-decoration-line: none;
+    font-size: 12px;}
+
+
+.tag-2 {
+    text-decoration-line: none;
+    font-size: 14px;}
+
+
+.tag-3 {
+    text-decoration-line: none;
+    font-size: 16px;}
+
+
+.tag-4 {
+    text-decoration-line: none;
+    font-size: 18px;}
+
+
+.tag-5 {
+    text-decoration-line: none;
+    font-size: 20px;}
+
+
+.tag-6 {
+    text-decoration-line: none;
+    font-size: 24px;}
+
+a {
+    color: #363864;
+}

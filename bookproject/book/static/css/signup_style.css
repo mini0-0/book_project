@@ -24,27 +24,18 @@ p {
     font-weight: 600;
 }
 
-#login_link{
-    position: relative;
-    top: -110px;
-    left: 1413px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #363864;
-}
-
 h2 {
     font-size: 23px;
     color: #363864;
     position: relative;
     left: 450px;
-    top: -50px;
+    top: -110px;
     margin-top: 20px;
 }
 
 .form-group label {
     position: relative;
-    top: -30px;
+    top: -100px;
     left: 330px;
     color: #363864;
     font-weight: 800;
@@ -55,7 +46,7 @@ h2 {
 .form-control {
     position: relative;
     left: 800px;
-    top: -31px;
+    top: -101px;
     font-size: 17px;
     border-style: solid;
     border-color: #FFC1AB;
@@ -66,8 +57,9 @@ h2 {
 }
 
 .btn-primary{
-    position: absolute;
-    left: 43%;
+    position: relative;
+    top: -70px;
+    left: 700px;
     background-color: #FFC1AB;
     border: none;
     border-radius: 5px;

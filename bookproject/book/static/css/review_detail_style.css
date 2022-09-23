@@ -77,3 +77,14 @@
     top: -402px;
     left: 820px;
  }
+
+ #div_tag {
+   position: relative;
+   top: -390px;
+   left: 700px;
+ }
+
+ #div_tag a {
+   color: #363864;
+   text-decoration-line: none;
+ }
