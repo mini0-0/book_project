@@ -1,4 +1,5 @@
 {% extends 'book/base.html' %}
+{% load static %}
 
 {% load widget_tweaks %}
 
@@ -11,30 +12,21 @@
 {% endblock title %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_form_style.css' %}?hello">
+
 <main class="site-body">
   <form class="review-form max-content-width" method="post" autocomplete="off" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="title">
-      {{ form.title|add_class:"cp-input"|attr:"placeholder:제목"}}
-      {% for error in form.title.errors %}
-        <div class="error-message"> {{error}}</div>
-      {% endfor  %}
-    </div>
     <div class="book">
+      <h3>책 제목</h3>
        {{ form.book |add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:책이름"}}
       {% for error in form.book.errors %}
         <div class="error-message"> {{error}}</div>
       {% endfor  %}
     </div>
-
-    <div class="content">
-      {{ form.review_context|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:리뷰를 작성해 주세요."}}
-      {% for error in form.content.errors %}
-        <div class="error-message"> {{error}}</div>
-      {% endfor  %}
-    </div>
-
     <div class="rating">
+      <h3>평점</h3>
       <div class="cp-ic-button">
          {{ form.rating }}
         {% for error in form.rating.errors %}
@@ -42,8 +34,26 @@
         {% endfor  %}
       </div>
     </div>
+    <div class="title">
+      <h3>리뷰 제목</h3>
+      {{ form.title|add_class:"cp-input"|attr:"placeholder:리뷰 제목을 입력해 주세요."}}
+      {% for error in form.title.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+    </div>
+    
+
+    <div class="review_content">
+      {{ form.review_context|add_class:"cp-input"|add_error_class:"error"|attr:"placeholder:리뷰를 작성해 주세요."}}
+      {% for error in form.content.errors %}
+        <div class="error-message"> {{error}}</div>
+      {% endfor  %}
+    </div>
+
+    
 
     <div class="tag">
+      <h4>태그</h4>
       {{ form.tag|add_class:"cp-input"|attr:"placeholder:태그"}}
       {% for error in form.tag.errors %}
         <div class="error-message"> {{error}}</div>
@@ -53,8 +63,9 @@
 
 
     <div class="buttons">
-      <a class="cp-button secondary cancel" href="{% if review %}{% url 'review-detail' review.id %}{% else %}{% url 'main' %}{% endif %}">취소</a>
-      <button class="cp-button submit" type="submit">완료</button>
+            <button class="cp-button submit" type="submit">완료</button>
+            <a class="cp-button-secondary" href="{% if review %}{% url 'review-detail' review.id %}{% else %}{% url 'main' %}{% endif %}">취소</a>
+
     </div>
   </form>
 </main>

@@ -1,14 +1,17 @@
 {% extends 'book/base.html' %}
-
+{% load static %}
 {% block title %}{{ review.title }} | Book {% endblock title %}
 
 {% block content %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_confirm_delete_style.css' %}?hello">
+
 <main class="site-body">
   <form class="cp-dialog review-confirm-delete" method="post">
     {% csrf_token %}
-    <span class="content">정말 리뷰를 삭제하시겠습니까?</span>
-    <button class="cp-button warn" type="submit">삭제</button>
-    <a class="cp-button secondary" href="{% url 'review-detail' review.id %}">취소</a>
+    <span class="content_review">정말 리뷰를 삭제하시겠습니까?</span>
+    <button class="cp-button-warn" type="submit">삭제</button>
+    <a class="cp-button-secondary" href="{% url 'review-detail' review.id %}">취소</a>
   </form>
 </main>
 {% endblock content %}

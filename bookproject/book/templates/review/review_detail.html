@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/review_detail_style.css' %}?hi">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/review_detail_style.css' %}?hello">
 
 {% comment %} <hr> {% endcomment %}
 
@@ -33,7 +33,7 @@
       
       <div id="content">
         내용
-        <p>&nbsp;{{ review.review_context |linebreaksbr }}</p>
+        <p>{{ review.review_context |linebreaksbr }}</p>
       </div>
 
       <div id="div_tag">
