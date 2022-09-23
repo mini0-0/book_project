@@ -5,7 +5,7 @@
 
 {% block header %}
     <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}?hello">
-    <header class="site-header navbar">
+    {% comment %} <header class="site-header navbar">
     <hr>
     <div class="content max-width">
         {% if user.is_authenticated %}
@@ -44,7 +44,7 @@
             <input type="search" name="q" id = "search_box" placeholder="Search">
             <input type="submit" value="검색" id = "search_btn"> 
         </form>
-    </div>
+    </div> {% endcomment %}
 
 
 

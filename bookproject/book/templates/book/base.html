@@ -9,6 +9,47 @@
 
     <title>{% block title %}북&장{% endblock title %}</title>
     <h1><a href="{% url 'main' %}" id = "site_name">북&장</a></h1>
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}?hello">
+    <header class="site-header navbar">
+    <hr>
+    <div class="content max-width">
+        {% if user.is_authenticated %}
+            <p> 안녕하세요, {{user.nickname}}님 </p>
+            
+            <a href="{% url 'account_logout' %}" id = "logout_link">로그아웃</a>
+            <a href="{% url 'book-recommend' %}" id="user_recommend_link"> {{ user.nickname}}님을 위한 책</a>
+            <a href="{% url 'review-list'%}" id="in_read_review_link">리뷰 보기</a>
+            <a href="{% url 'profile' user.id %}" id = "myprofile_link">내 프로필 </a>
+            <a href="{% url 'review-create' %}" id = "write_review_link"> 리뷰 작성 </a>
+            
+        {% else %}
+            <p> 로그아웃된 상태입니다.</p>
+            <a href="{% url 'login' %}" id = "login_link" >로그인</a>
+            <a href="{% url 'signup' %}" id = "signup_link">회원가입</a>
+            <a href="{% url 'review-list'%}" id="out_read_review_link">리뷰 보기</a>
+            
+        {% endif %}
+
+        
+        
+
+    </div>
+    </header>
+
+    <div class="search">
+        <form action="{% url 'search' %}" method="GET">
+            
+            <select name="option_select" id="option">
+                <option value="all">전체</option>
+                <option value="title">제목</option>
+                <option value="author">저자</option>
+                <option value="publisher">출판사</option>
+                <option value="genre">장르</option>
+            </select>
+            <input type="search" name="q" id = "search_box" placeholder="Search">
+            <input type="submit" value="검색" id = "search_btn"> 
+        </form>
+    </div> 
   </head>
   <body>
     {% block header %}{% endblock header %}
