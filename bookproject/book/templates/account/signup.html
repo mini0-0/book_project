@@ -3,12 +3,10 @@
 {% block content %}
 <link rel="stylesheet" type="text/css" href = "{% static 'css/signup_style.css' %}?hello">
 
-<hr>
-
-<p>어서오세요</p>
-<div class="auth.link">
+{% comment %} <title><p>어서오세요</p></title> {% endcomment %}
+{% comment %} <div class="auth.link">
     <a href="{% url 'login' %}" id = "login_link">로그인</a>
-</div>
+</div> {% endcomment %}
 
 <h2>회원가입</h2>
 

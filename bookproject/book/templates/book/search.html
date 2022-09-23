@@ -4,7 +4,7 @@
 {% block header %}
     <link rel="stylesheet" type="text/css" href = "{% static 'css/search_style.css' %}?hello">
     <header class="site-header navbar">
-    <hr>
+    {% comment %} <hr> 
     <div class="content max-width">
         {% if user.is_authenticated %}
             <p> 안녕하세요, {{user.nickname}}님 </p>
@@ -43,7 +43,7 @@
             <input type="submit" value="검색" id = "search_btn"> 
         </form>
     </div>
-
+{% endcomment %}
 <div class="search_result">
     
     <h3>&nbsp&nbsp&nbsp'{{ search_key }}'의 검색결과</h3>
