@@ -4,7 +4,7 @@
 {% providers_media_js %}
 
 {% block header %}
-    <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}?hello">
+    <link rel="stylesheet" type="text/css" href = "{% static 'css/main_style.css' %}?hi">
     {% comment %} <header class="site-header navbar">
     <hr>
     <div class="content max-width">
@@ -77,7 +77,7 @@
     
                                 </div>
                                 <div class="page" id="page2">
-                                    <a href="{{ i.get_absolute_url }}">
+                                    <a href="{{ i.get_absolute_url }}"> 
                                         <h3>{{ i.book_title }}</h3>
                                         <h5> 작가 : {{ i.book_author }} </h5>
                                         <h5> 출판사 : {{ i.book_publisher }} </h5>
