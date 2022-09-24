@@ -123,10 +123,6 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
 
 
-# class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
-#     def get_success_url(self):
-#         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
-
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
     def get_success_url(self):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
@@ -223,16 +219,18 @@ def bookDetail(request,book_isbn):
         book = bookMultiple[0]
     reviews = Review.objects.all()
 
-    if user is None:
+    try:
+        User.objects.get(email=user.email)
+        isLogin=True
+    
+    except:
         isLogin=False
         
-    else:
-        isLogin = True
-        try:
-            wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
-            wished=True
-        except:
-            wished=False
+    try:
+        wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
+        wished=True
+    except:
+        wished=False
 
 
     return render(
@@ -250,6 +248,8 @@ def bookDetail(request,book_isbn):
 
 def addWishList(request, book_isbn):
     user = request.user
+    reviews = Review.objects.all()
+
     try:
         book = Book.objects.get(book_isbn=book_isbn)
     except:
@@ -274,7 +274,9 @@ def addWishList(request, book_isbn):
         'book/book_detail.html',
         {
             'book': book,
-            'wished': wished
+            'wished': wished,
+            'isLogin': True,
+            'reviews': reviews
         }
     )
 
