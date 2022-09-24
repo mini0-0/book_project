@@ -1,4 +1,3 @@
-
 from contextlib import nullcontext
 from multiprocessing import context
 from urllib import request
@@ -124,6 +123,10 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
 
 
+# class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
+#     def get_success_url(self):
+#         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
+
 class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
     def get_success_url(self):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
@@ -219,11 +222,17 @@ def bookDetail(request,book_isbn):
         bookMultiple = Book.objects.filter(book_isbn=book_isbn)
         book = bookMultiple[0]
     reviews = Review.objects.all()
-    try:
-        wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
-        wished=True
-    except:
-        wished=False
+
+    if user is None:
+        isLogin=False
+        
+    else:
+        isLogin = True
+        try:
+            wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
+            wished=True
+        except:
+            wished=False
 
 
     return render(
@@ -235,6 +244,7 @@ def bookDetail(request,book_isbn):
             'wished' : wished,
             'reviews': reviews,
             'book_list':book_list,
+            'isLogin':isLogin
         }
     )
 
