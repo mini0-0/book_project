@@ -424,13 +424,13 @@ def recommendations(book_title):
     indices = pd.Series(df.index, index = df['book_title']).drop_duplicates()    
     idx = indices[book_title]
 
-    # 입력된 책과 줄거리(document embedding)가 유사한 책 15개 선정.
+    # 입력된 책과 줄거리(document embedding)가 유사한 책 10개 선정.
     sim_scores = list(enumerate(cosine_similarities[idx]))
     sim_scores = sorted(sim_scores, key = lambda x: x[1], reverse = True)
     sim_scores = sim_scores[1:11]
 
     
-    # 가장 유사한 책 15권의 인덱스
+    # 가장 유사한 책 10권의 인덱스
     book_indices = [i[0] for i in sim_scores]
 
     # 전체 데이터프레임에서 해당 인덱스의 행만 추출. 5개의 행을 가진다.
@@ -470,7 +470,7 @@ def book_recommend(request):
         re_list.append(re)
 
     page = request.GET.get('page', '1') #GET 방식으로 정보를 받아오는 데이터
-    paginator = Paginator(re_list, '2') #Paginator(분할될 객체, 페이지 당 담길 객체수)
+    paginator = Paginator(re_list, 2) #Paginator(분할될 객체, 페이지 당 담길 객체수)
     page_obj = paginator.get_page(page) #페이지 번호를 받아 해당 페이지를 리턴
     context={
         'wishlist_title':wishlist_title,
