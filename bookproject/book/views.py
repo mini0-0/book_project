@@ -15,7 +15,7 @@ from django.views.generic import(
 )
 from book.forms import ProfileForm, ReviewForm
 from braces.views import LoginRequiredMixin, UserPassesTestMixin
-from allauth.account.views import PasswordChangeView
+from allauth.account.views import PasswordChangeViews
 from book.models import Genre, User, Book, WishBookList, Review
 from book.functions import confirmation_required_redirect
 from gensim.models import word2vec
@@ -123,11 +123,7 @@ class ProfileUpdateView(LoginRequiredMixin,UpdateView):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
 
 
-# class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
-#     def get_success_url(self):
-#         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
-
-class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeView) :
+class CustomPasswordChangeView(LoginRequiredMixin, PasswordChangeViews) :
     def get_success_url(self):
         return reverse('profile',kwargs=({'user_id':self.request.user.id}))
  
@@ -227,7 +223,7 @@ def bookDetail(request,book_isbn):
         isLogin=False
         
     else:
-        isLogin = True
+        isLogin=True
         try:
             wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
             wished=True
