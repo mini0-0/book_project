@@ -1,15 +1,14 @@
 .alert {
     position: relative;
-    top: -360px;
-    left: 1140px;
+    top: -550px;
+    left: 1070px;
     width: 300px;
     font-size:15px;
     color: red;
-    line-height: 95%;
+    line-height: 120%;
 }
 
 .errorlist {
     position: relative;
-    left: 0%;
     width: 150%;
 }

@@ -72,11 +72,11 @@ h2 {
 
 .errorlist{
     position: relative;
+    
 }
 
 .alert-danger {
-    position: absolute;
-    right: 5%;
+    position: relative;
     width: 300px;
     font-size:small;
     color: red;

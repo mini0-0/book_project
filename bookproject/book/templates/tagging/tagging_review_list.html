@@ -12,7 +12,7 @@
     {% for review in object_list %}
         <h2><a href="{% url 'review-detail' review.id %}"> {{ review.title }}</a></h2>
         <p>{{ review.dt_updated|date:"Y년 n월 j일" }}</p>
-        <p>{{ review.review_context }}</p>
+        <p>{{ review.review_context |linebreaksbr }}</p>
     {% endfor %}
 </div>
 
