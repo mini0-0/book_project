@@ -22,6 +22,7 @@ from book.views import CustomPasswordChangeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/',include('allauth.urls')),
     # book
     path('', include('book.urls')),
 
@@ -39,8 +40,8 @@ urlpatterns = [
     ),
     
     path('password/change/',
-        CustomPasswordChangeView.as_view(),name='account_password_change',),
-    path('accounts/',include('allauth.urls')),
+        CustomPasswordChangeView.as_view(),name='account_change_password',),
+    
     path('api-auth/', include('rest_framework.urls')),
     
 ]
