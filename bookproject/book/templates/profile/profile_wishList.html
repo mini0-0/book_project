@@ -3,7 +3,7 @@
 
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}?hi">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/profile_wishList_style.css' %}?hello">
 
 {% comment %} <hr> {% endcomment %}
 
@@ -22,7 +22,7 @@
             {% endif %}
         {% else %}
             <h2>로그인을 한 후 이용해주세요.</h2>
-            <h3><a href="{% url 'login' %}">로그인</a></h3>
+            <h3><a href="{% url 'login' %}">로그인 바로가기 </a></h3>
         {% endif %}
 
     </body>

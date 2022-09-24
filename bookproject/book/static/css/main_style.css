@@ -15,14 +15,6 @@ hr {
    border: 0;
 }
 
-.content p {
-    position: relative;
-    top: -100px;
-    left: 1265px;
-    font-size: 20px;
-    color: #363864;
-    font-weight: 600;
-}
 
 #login_link{
     position: relative;
@@ -80,6 +72,14 @@ hr {
     
  }
 
+.content p {
+    position: relative;
+    top: -100px;
+    left: 1265px;
+    font-size: 20px;
+    color: #363864;
+    font-weight: 600;
+}
  #out_read_review_link {
    position: relative;
    top: -118px;
