@@ -1,4 +1,3 @@
-
 from contextlib import nullcontext
 from multiprocessing import context
 from urllib import request
@@ -16,7 +15,7 @@ from django.views.generic import(
 )
 from book.forms import ProfileForm, ReviewForm
 from braces.views import LoginRequiredMixin, UserPassesTestMixin
-from allauth.account.views import PasswordChangeView
+from allauth.account.views import PasswordChangeViews
 from book.models import Genre, User, Book, WishBookList, Review
 from book.functions import confirmation_required_redirect
 from gensim.models import word2vec
@@ -219,11 +218,17 @@ def bookDetail(request,book_isbn):
         bookMultiple = Book.objects.filter(book_isbn=book_isbn)
         book = bookMultiple[0]
     reviews = Review.objects.all()
-    try:
-        wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
-        wished=True
-    except:
-        wished=False
+
+    if user is None:
+        user_id="no"
+        
+    else:
+        user_id="yes"
+        try:
+            wishlist = WishBookList.objects.get(user_id=user,book_id=book) 
+            wished=True
+        except:
+            wished=False
 
 
     return render(
@@ -235,6 +240,7 @@ def bookDetail(request,book_isbn):
             'wished' : wished,
             'reviews': reviews,
             'book_list':book_list,
+            'user_id':user_id
         }
     )
 
