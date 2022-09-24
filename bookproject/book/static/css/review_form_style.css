@@ -78,9 +78,19 @@
     font-size: 17px;
     border: 3px solid #FFC1AB;
     width: 800px;
-    height: 180px;
+    height: 160px;
     padding: 3px;
     border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    border: none;
+    width: 794px;
+}
+
+textarea:focus {
+    outline: none;  
 }
 
 .tag h4 {
@@ -101,15 +111,6 @@
     BORDER-TOP: medium none;
     height: 30px;
     width: 500px;
-}
-
-textarea {
-    resize: none;
-    border: none;
-}
-
-textarea:focus {
-    outline: none;  
 }
 
 .buttons button{

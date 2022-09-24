@@ -1,20 +1,3 @@
-#site_name {
-    color: #363864;
-    text-decoration-line: none;
-    font-size: 35px;
-    position: relative;
-    top: 0px;
-    left: 300px;
- }
- 
- hr {
-    position: relative;
-    top: 0px;
-    background-color: #FFC1AB;
-    height: 5px;
-    border: 0;
- }
-
 .profile-pic {
     position: relative;
     top: -70px;
