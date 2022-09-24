@@ -81,10 +81,11 @@
 
 
 .contents p {
-    color: #363864;
+    font-size: 18px;
+    font-weight: 500;
     position: relative;
     left: 410px;
-    top: -110px;
+    top: -230px;
 }
 
 
