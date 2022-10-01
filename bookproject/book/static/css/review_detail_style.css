@@ -7,14 +7,14 @@
  h2 {
     color: #363864;
     position: relative;
-    top: -460px;
+    top: -430px;
     left: 700px;
  }
 
  .title {
     color: #363864;
     position: relative;
-    top: -460px;
+    top: -430px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -23,7 +23,7 @@
  .date {
     color: #363864;
     position: relative;
-    top: -460px;
+    top: -430px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -32,7 +32,7 @@
 .cp-stars {
     color: #363864;
     position: relative;
-    top: -460px;
+    top: -430px;
     left: 700px;
     font-size: 18px;
     font-weight: 550;
@@ -42,7 +42,7 @@
  #content {
     color: #363864;
     position: relative;
-    top: -460px;
+    top: -430px;
     left: 700px;
     font-weight: 550;
  }
@@ -61,27 +61,27 @@
  .back-link{
     color: #363864;
     position: relative;
-    top: -380px;
+    top: -415px;
     left: 700px;
  }
 
 .secondary {
     color: #363864;
     position: relative;
-    top: -402px;
+    top: -437px;
     left: 800px;
  }
 
  .warn {
     color: #363864;
     position: relative;
-    top: -402px;
+    top: -437px;
     left: 820px;
  }
 
  #div_tag {
    position: relative;
-   top: -390px;
+   top: -420px;
    left: 700px;
  }
 
