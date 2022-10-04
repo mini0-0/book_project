@@ -1,0 +1,43 @@
+h2 {
+    color: #363864;
+    position: relative;
+    left: 400px;
+    top: -100px;
+}
+
+p {
+    color: #363864;
+    position: relative;
+    top: -95px;
+    left: 430px;
+    font-size: 19px;
+    font-weight: 500;
+    
+}
+
+h3 {
+    font-size: 23px;
+    color: #363864;
+    position: relative;
+    left: 25%;
+    margin-top: -110px;    
+}
+
+#book_link {
+    text-decoration-line: none;
+    color: #363864;
+    font-weight: 500;
+}
+
+body a {
+    color: #363864;
+    position: relative;
+    left: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+body p{
+    font-size: 19px;
+    font-weight: 600;
+}

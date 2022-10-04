@@ -1,0 +1,26 @@
+#tag_content h1 {
+    color: #363864;
+    position: relative;
+    top: -100px;
+    left: 640px;
+}
+
+#tag_content h2 {
+    position: relative;
+    top: -80px;
+    left: 640px;
+}
+
+#tag_content a {
+    color: #363864;
+    text-decoration-line: none;
+    margin-bottom: 5px;
+}
+
+#tag_content p {
+    color: #363864;
+    position: relative;
+    top: -90px;
+    left: 640px;
+    margin : 5px;
+}

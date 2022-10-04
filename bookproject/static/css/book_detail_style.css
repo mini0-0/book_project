@@ -1,0 +1,93 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    top: 0px;
+    left: 300px;
+}
+
+hr {
+    position: relative;
+    top: 0px;
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+img {
+    position: relative;
+    left: 350px;
+    top: -300px;
+}
+
+
+#book_detail {
+    color: #363864;
+    position: relative;
+    top: -100px;
+    left: 700px;
+}
+
+#book_detail h2{
+    font-size: 18px;
+}
+
+button {
+    position: relative;
+    left : 700px;
+    top: 160px;
+    display: inline-block;
+    outline: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 2px solid #FFC1AB;
+    color: #FFC1AB;
+    background: 0 0;
+    padding: 8px;
+    font-weight: 800;
+    font-size: 16px;
+    height: 42px;
+}
+
+button:hover{
+    background-color: #FFC1AB;
+    color: #fff;
+}
+
+#div_review {
+    position: relative;
+    color: #363864;
+    top: -270px;
+    left: 350px;
+    line-height: 30px;
+}
+
+#div_review h4{
+    left: 10px;
+}
+
+#div_review a {
+    color: #363864;
+    text-decoration-line: none;
+}
+
+
+
+table {
+    width: 1000px;
+    border-top: 1px solid #FFC1AB;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid #FFC1AB;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#re_ {
+    font-weight: 700;
+    font-size: 17px;
+}
