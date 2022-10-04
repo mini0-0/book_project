@@ -1,0 +1,92 @@
+ h2{
+    position: relative;
+    color: #363864;
+    top: -80px;
+    left: 350px;
+    line-height: 30px;
+ }
+
+
+ #div_review {
+    position: relative;
+    color: #363864;
+    top: 170px;
+    left: 350px;
+    line-height: 30px;
+}
+
+#div_review h4{
+    left: 10px;
+}
+
+table a {
+    color: #363864;
+    text-decoration-line: none;
+}
+
+
+
+table {
+    position: relative;
+    top: -60px;
+    left: 350px;
+    width: 1000px;
+    border-top: 1px solid #FFC1AB;
+    border-collapse: collapse;
+}
+
+td {
+    border-bottom: 1px solid #FFC1AB;
+    padding: 10px;
+    text-align: center;
+}
+
+
+#re_ {
+    font-weight: 700;
+    font-size: 17px;
+    color: #363864;
+}
+
+.pagination {
+    position: relative;
+    left: 750px;
+    top: -40px;
+    display: flex;
+    list-style: none;
+}
+
+.pagination li a{
+    color: #363864;
+    padding: 10px;
+    text-decoration-line: none;
+}
+
+.pagination li a:hover {
+    background-color: #FFC1AB;
+    border-radius: 4px;
+}
+
+.current {
+    color: darksalmon;
+}
+
+.current a:hover {
+    background-color: #FFC1AB;
+    border-radius: 4px;
+}
+
+.pagenation a{
+    position: relative;
+    left: 400px;
+    font-size: 15px;
+    color: #363864;
+    font-weight: 600;
+}
+
+#none {
+   color: #363864;
+   position: relative;
+   left: 450px;
+   top: -100px;
+}
