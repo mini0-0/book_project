@@ -6,9 +6,9 @@
 
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href = "{% static 'css/tagging_cloud_style.css' %}?hi">
+<link rel="stylesheet" type="text/css" href = "{% static 'css/tagging_cloud_style.css' %}?hello">
 <div id="content">
-    <h1>Blog Tag Cloud</h1>
+    <h1>Review Tag Cloud</h1>
     <div class="tag-cloud">
         {% load tagging_tags %}
         {% tag_cloud_for_model book.Review as tags with steps=6 min_count=1 distribution=log %}

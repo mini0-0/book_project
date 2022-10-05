@@ -1,0 +1,62 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    top: 0px;
+    left: 300px;
+}
+
+hr {
+    position: relative;
+    top: 0px;
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+}
+
+h2 {
+    font-size: 23px;
+    color: #363864;
+    position: relative;
+    left: 420px;
+    margin-top: -90px;
+}
+
+ul {
+    position: relative;
+    top: 10px;
+    left: 505px;
+    color: #363864;
+    font-weight: 800;
+    
+}
+
+li {
+    position: relative;
+    line-height: 160%;
+    right: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #363864;
+}
+
+#genre_name:link {
+    color: #363864;
+    text-decoration: none;   
+}
+
+#genre_name:visited {
+    color: #363864;
+    text-decoration: none;   
+}
+
+#genre_name:hover {
+    background-color: #FFD3C0;
+    text-decoration: none;   
+}
+
+#genre_name:active {
+    background-color: #FFD3C0;
+    text-decoration: none;   
+}

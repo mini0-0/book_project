@@ -1,0 +1,163 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  color :#414a67;
+  font-family:sans-serif;
+
+}
+
+body {
+  background-image: #34495e;
+}
+
+.loginForm {
+  position:relative;
+  width:300px;
+  height:400px;
+  padding: 30px, 20px;
+  background-color:#FFFFFF;
+  text-align:center;
+  top:325px;
+  left:850px;
+  transform: translate(-50%,-50%);
+  border-radius: 15px;
+  color :#414a67;
+
+}
+
+.loginForm h2{
+  text-align: center;
+  margin: 30px;
+}
+
+.idForm{
+  border: 2px solid #414a67;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 10px;
+}
+
+.passForm{
+  border: 2px solid #414a67;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px 10px;
+}
+
+.id {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.pw {
+  width: 100%;
+  border:none;
+  outline:none;
+  color: #636e72;
+  font-size:16px;
+  height:25px;
+  background: none;
+}
+
+.btn {
+  position:relative;
+  left:40%;
+  transform: translateX(-50%);
+  margin-bottom: 40px;
+  width:80%;
+  height:40px;
+  background: #ffaf97 ;
+  background-position: left;
+  background-size: 200%;
+  color:white;
+  font-size : 16px;
+  font-weight: bold;
+  border:none;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  cursor:pointer;
+  transition: 0.4s;
+  display:inline;
+}
+
+.btn:hover {
+  background-position: right;
+}
+
+.bottomText {
+  text-align: center;
+  color: #414a67 ;
+}
+
+.social-icon button {
+
+  margin-right: 12px;
+  font-size: 16px;
+  color: white;
+  height: 40px;
+  width: 80%;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  position : relative;
+  text-align : center;
+  
+}
+
+#naver-button {
+  background-color: #539F4E;
+}
+#kakao-button {
+  background-color: #f7e033;
+}
+#google-button {
+  background-color: #C34939;
+}
+
+.social-icon .icon {
+  margin-right: 10px;
+  font-size : 16px;
+  text-align : center;
+  display: inline-block;
+  position: relative;
+}
+
+
+
+.seperator {
+  float: left;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  margin: 50px 0 0;
+}
+
+.seperator b {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}

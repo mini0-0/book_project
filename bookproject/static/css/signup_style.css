@@ -1,0 +1,83 @@
+#site_name {
+    color: #363864;
+    text-decoration-line: none;
+    font-size: 35px;
+    position: relative;
+    top: 0px;
+    left: 300px;
+ }
+ 
+ hr {
+    position: relative;
+    top: 0px;
+    background-color: #FFC1AB;
+    height: 5px;
+    border: 0;
+ }
+
+p {
+    position: relative;
+    top: -90px;
+    left: 1360px;
+    font-size: 20px;
+    color: #363864;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 23px;
+    color: #363864;
+    position: relative;
+    left: 450px;
+    top: -110px;
+    margin-top: 20px;
+}
+
+.form-group label {
+    position: relative;
+    top: -100px;
+    left: 330px;
+    color: #363864;
+    font-weight: 800;
+    font-size: 18px;
+
+}
+
+.form-control {
+    position: relative;
+    left: 800px;
+    top: -101px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: #FFC1AB;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 40px;
+}
+
+.btn-primary{
+    position: relative;
+    top: -70px;
+    left: 700px;
+    background-color: #FFC1AB;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    height: 30px;
+    width: 200px;
+}
+
+.errorlist{
+    position: relative;
+    
+}
+
+.alert-danger {
+    position: relative;
+    width: 300px;
+    font-size:small;
+    color: red;
+}
