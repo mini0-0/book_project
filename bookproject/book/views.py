@@ -32,6 +32,7 @@ from tagging.views import TaggedObjectList #추가
 # from rest_framework.decorators import api_view
 # from rest_framework.response import Response
 # from krwordrank.word import summarize_with_keywords
+# checking
 
 
 df = pd.DataFrame(list(Book.objects.all().values()))
