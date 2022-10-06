@@ -1,0 +1,92 @@
+#change_nickname {
+    position: relative;
+    top: -75px;
+    left: 640px;
+    font-size: 17px;
+    color: #363864;
+    font-weight: 800;   
+}
+
+.nickname input{
+    position: relative;
+    top: -113px;
+    left: 845px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: #FFC1AB;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+#change_image {
+    position: relative;
+    top: -88px;
+    left: 640px;
+    font-size: 17px;
+    color: #363864;
+    font-weight: 800;
+}
+
+
+.file {
+    position: relative;
+    top: -129px;
+    left: 845px;
+    color: #363864;
+}
+
+#change_self-intro {
+    position: relative;
+    top: -103px;
+    left: 640px;
+    font-size: 17px;
+    color: #363864;
+    font-weight: 800;
+}
+.self_content{
+    position: relative;
+    top: -138px;
+    left: 845px;
+    font-size: 17px;
+    border-style: solid;
+    border-color: #FFC1AB;
+    width: 290px;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+    border: none;
+}
+
+textarea:focus {
+    outline: none;  
+}
+
+button {
+    position: relative;
+    top: -110px;
+    left: 795px;
+    background-color: #FFC1AB;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 17px;
+    height: 30px;
+    width: 80px;
+}
+
+#cancel_link {
+    position: relative;
+    top: -75px;
+    left: 733px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #363864;
+}

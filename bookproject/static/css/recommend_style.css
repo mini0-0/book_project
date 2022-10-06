@@ -1,0 +1,81 @@
+#title{
+   color: #363864;
+   position: relative;
+   left: 300px;
+   top: -110px;
+ }
+
+#hashtag{
+   color: #363864;
+   position: relative;
+   left: 300px;
+   top: -110px;
+   font-size: 20px;
+ }
+
+ table{
+   position: relative;
+   top: 140px;
+   left: 30px;
+ }
+
+ #pageSection{
+   position: relative;
+   top:-230px;
+   left: 60px;
+   width: 200px;
+   height: 350px;
+   margin-left: 70px;
+}
+ 
+.page {
+   position: absolute;
+   top: 0;
+   left: 0;
+   background-color: white;
+}
+ 
+#page1 {
+   z-index: 1;
+   transform-origin: left center;
+   transition-duration: 1s;
+   transition-timing-function: ease-in;
+   width: 200px;
+   height: 200px;
+ }
+  
+ #page1:hover {
+    transform: rotateY(-180deg);
+    opacity: 0.4;
+  }
+  
+  #page2 {
+   text-align: center;
+   z-index: 0;
+   padding: 0 8px;
+   width: 184px;
+}
+
+#page2 a{
+   text-decoration-line: none;
+}
+ 
+h3 {
+   font-size: 18px;
+   color: #363864;
+}
+
+h5 {
+   color: #363864;
+}
+
+.flex-container {
+   display: flex;
+   position: relative;
+   left: 100px;
+   width: 250px;
+}
+
+.flex-container .book {
+   flex-wrap: wrap;
+}
